@@ -1,0 +1,85 @@
+
+.campo-texto{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+   
+   } 
+
+   .campo-texto input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--cor-da-fonte);
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid var(--cor-da-fonte);
+    outline: none;
+    background: transparent;
+  }
+  .campo-texto label {
+    position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  color: var(--cor-da-fonte);
+  pointer-events: none;
+  transition: .5s;
+  }
+
+  .campo-texto input:focus ~ label,
+.campo-texto input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color:  #fff;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 20px var(--cinza-escuro) inset;
+  -webkit-text-fill-color: #fff;
+  outline: none;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .campo-texto label {
+    font-size: 15px;
+  }
+  .campo-texto input:focus ~ label,
+  .campo-texto input:valid ~ label {
+    font-size: 13px;
+  }
+ 
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .campo-texto input:focus ~ label,
+  .campo-texto input:valid ~ label {
+    font-size: 16px;
+  }
+  .campo-texto label {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .campo-texto input:focus ~ label,
+  .campo-texto input:valid ~ label {
+    font-size: 16px;
+  }
+  .campo-texto label {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .campo-texto input:focus ~ label,
+  .campo-texto input:valid ~ label {
+    font-size: 16px;
+  }
+  .campo-texto label {
+    font-size: 25px;
+  }
+ 
+}

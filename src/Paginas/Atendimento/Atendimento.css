@@ -1,0 +1,30 @@
+
+.telaAtendimento{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.botaoSair{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+margin-right: 3rem;
+  color: aliceblue;
+  text-align: right;
+  font-family: Kadwa;
+}
+
+.link{
+  text-decoration: none;
+  color: rgba(255, 253, 253, 1);
+  font-family: Kadwa;
+  white-space: nowrap;
+}
+
+
+.icones{
+  justify-content: center;
+  vertical-align: -20px;
+}
+
