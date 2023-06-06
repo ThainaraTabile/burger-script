@@ -8,7 +8,7 @@ import Botao from '../../componentes/Botao/Botao';
 export default function AguardandoEntrega() {
   const marcarComoEntregue = async (pedido) => {
     try {
-      await atualizarStatusPedido(pedido.id, 'pedido entregue');
+      await atualizarStatusPedido(pedido.id, 'entregue');
       alert('Pedido entregue com sucesso!');
       window.location.reload();
     } catch (error) {
@@ -26,7 +26,7 @@ export default function AguardandoEntrega() {
       <MenuNavegacao texto="aguardando entrega" imagemSrc="relogio.png" />
       <ListaPedidos
         status="pronto para entrega"
-        props={'Data de envio'}
+        props={'Data de envio:'}
         btnStatus={(pedido) => (
           <Botao onClick={() => marcarComoEntregue(pedido)}>concluído</Botao>
         )}

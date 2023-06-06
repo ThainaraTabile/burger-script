@@ -46,6 +46,7 @@ const ListaPedidos = ({ status, btnStatus, props }) => {
               <li>
                 <strong>Data de Entrada:</strong> {pedido.dateEntry}
               </li>
+      
               </div>
               <div className="colunas-container">
                 <div className="coluna-produtos">

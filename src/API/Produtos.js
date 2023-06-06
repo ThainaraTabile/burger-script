@@ -1,18 +1,18 @@
-const API_URL = 'https://burger-queen-api-mock-mluz.vercel.app';
+import {
+  API_URL,
+  pegarAuthToken,
+}
+   from './localStorage/LocalStorageToken.js'
 
-const pegarAuthToken = () => {
-  const token = localStorage.getItem('authToken');
-  return token;
-};
 
 export const adicionarProdutos = async (nomeProduto, precoProduto, tipoProduto, categoriaProduto, idProduto) => {
   try {
-    const authToken = pegarAuthToken();
+   
     const response = await fetch(`${API_URL}/products`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${pegarAuthToken()}`,
       },
       body: JSON.stringify({
         name: nomeProduto,
@@ -32,12 +32,11 @@ export const adicionarProdutos = async (nomeProduto, precoProduto, tipoProduto, 
 
 export const obterProdutos = async () => {
   try {
-    const authToken = pegarAuthToken();
     const response = await fetch(`${API_URL}/products`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${pegarAuthToken()}`,
       },
     });
     const data = await response.json();
@@ -50,9 +49,8 @@ export const obterProdutos = async () => {
 
 export const deletarProduto = async (id) => {
   try {
-    const authToken = pegarAuthToken();
 
-    if (!authToken) {
+    if (!pegarAuthToken()) {
       throw new Error('Usuário não autenticado');
     }
 
@@ -60,7 +58,7 @@ export const deletarProduto = async (id) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`
+        'Authorization': `Bearer ${pegarAuthToken()}`
       }
     });
 

@@ -18,7 +18,7 @@ export default function PedidosEntregues() {
         imagemSrc="pedido-entregue.png"
       />
       <ListaPedidos
-        status="pedido entregue"
+        status="entregue"
         props={'Data de entrega'}
         btnStatus={(pedido) => (
           <button style={{ cursor: 'default', color: 'black' }} disabled>

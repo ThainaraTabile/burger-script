@@ -37,6 +37,7 @@ const ResumoPedido = ({ produtosSelecionados }) => {
           nomeCliente,
           mesa,
           produtos,
+          dataPedido,
           obterNomeUsuario()
         );
         console.log('Pedido registrado:', novoPedido);
@@ -139,9 +140,14 @@ const ResumoPedido = ({ produtosSelecionados }) => {
           },
         }}
       >
-        <img src='../../imagens/tela.png' className='logo-modal'/>
+        <img src='../../imagens/tela.png' 
+        className='logo-modal'
+        alt='Logo Burger Script'/>
         <h2 className='msg-sucesso-modal'> Pedido enviado com sucesso! </h2>
-        <Botao onClick={handleModalClose}>OK</Botao>
+        <Botao 
+        onClick={handleModalClose}>
+          OK
+          </Botao>
       </Modal>
     </>
   );
