@@ -2,6 +2,7 @@
 import FormularioAdmin from "../Formulario/FormularioAdmin";
 import { Link } from "react-router-dom";
 import MenuNavegacao from "../MenuNavegacao/MenuNavegacao";
+import TokenExpiracao from "../../Autenticacao/Auth";
 
 export default function CriarUsuario() {
   return (
@@ -11,6 +12,7 @@ export default function CriarUsuario() {
           Voltar
         </Link>
       </nav>
+      <TokenExpiracao />
       <MenuNavegacao
                 to='/addcolaborador'
                 texto='adicionar colaborador'

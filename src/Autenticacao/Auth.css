@@ -1,0 +1,35 @@
+.exp-token{
+    justify-content: right;
+    text-align: right;
+    margin: 1rem;
+    margin-right: 3rem;
+    color: var(--cinza-claro);
+    font-family: serif;
+}
+
+
+  @media only screen and (max-width: 767px) {
+    .exp-token{
+      font-size: 1em;
+    }
+  
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .exp-token{
+        font-size: 1.3em;
+      }
+  }
+  
+  @media only screen and (min-width: 1024px) {
+  
+    .exp-token{
+      font-size: 1.3em;
+    }
+  }
+  
+  @media only screen and (min-width: 1200px) {
+    .exp-token{
+      font-size: 1.5em;
+    }
+  
+  } 

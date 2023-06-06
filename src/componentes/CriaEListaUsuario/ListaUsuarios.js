@@ -5,6 +5,7 @@ import { listarUsuarios, editarUsuario, deletarUsuario} from "../../API/Usuarios
 import BtnEditarUsuario from "../EditarDeletarUsuario/BtnEditarUsuario";
 import BtnDeletarUsuario from "../EditarDeletarUsuario/BtnDeletarUsuario";
 import MenuNavegacao from "../MenuNavegacao/MenuNavegacao";
+import TokenExpiracao from "../../Autenticacao/Auth";
 
 export default function ListaDeUsuarios() {
   const [usuarios, setUsuarios] = useState([]);
@@ -59,6 +60,7 @@ export default function ListaDeUsuarios() {
           Voltar
         </Link>
       </nav>
+      <TokenExpiracao />
       <MenuNavegacao
                 texto='listar colaboradores'
                 imagemSrc='lista.png'

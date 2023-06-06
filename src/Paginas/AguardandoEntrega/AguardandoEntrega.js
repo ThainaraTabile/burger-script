@@ -4,6 +4,7 @@ import ListaPedidos from '../../componentes/Pedidos/Pedidos';
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import { atualizarStatusPedido } from '../../API/Pedidos';
 import Botao from '../../componentes/Botao/Botao';
+import TokenExpiracao from '../../Autenticacao/Auth';
 
 export default function AguardandoEntrega() {
   const marcarComoEntregue = async (pedido) => {
@@ -23,6 +24,7 @@ export default function AguardandoEntrega() {
           Voltar
         </Link>
       </nav>
+      <TokenExpiracao />
       <MenuNavegacao texto="aguardando entrega" imagemSrc="relogio.png" />
       <ListaPedidos
         status="pronto para entrega"
