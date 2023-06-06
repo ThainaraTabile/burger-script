@@ -4,6 +4,7 @@ import ListaPedidos from '../../componentes/Pedidos/Pedidos';
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import Botao from '../../componentes/Botao/Botao';
 import { atualizarStatusPedido } from '../../API/Pedidos';
+import TokenExpiracao from '../../Autenticacao/Auth';
 
 export default function PedidosProntos() {
   const enviarPedido = async (pedido) => {
@@ -23,7 +24,11 @@ export default function PedidosProntos() {
           Voltar
         </Link>
       </nav>
-      <MenuNavegacao texto="pronto para servir" imagemSrc="pronto-para-servir.png" />
+      <TokenExpiracao />
+      <MenuNavegacao
+       texto="pronto para servir" 
+       imagemSrc="pronto-para-servir.png" 
+       />
       <ListaPedidos
         status="pronto para entrega"
         props={'Processamento'}

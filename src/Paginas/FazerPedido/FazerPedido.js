@@ -5,6 +5,8 @@ import './FazerPedido.css'
 import { Link } from 'react-router-dom'
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao'
 
+import TokenExpiracao from '../../Autenticacao/Auth'
+
 const FazerPedido = () => {
   const [produtosSelecionados, setProdutosSelecionados] = useState([]);
 
@@ -43,6 +45,9 @@ const FazerPedido = () => {
       <nav className='botaoSair'>
         <Link to='/atendimento' className='botaoSair'>Voltar</Link>
       </nav>
+      <TokenExpiracao
+     
+      />
       <MenuNavegacao
         to='/fazerpedido'
         texto='registrar pedido'

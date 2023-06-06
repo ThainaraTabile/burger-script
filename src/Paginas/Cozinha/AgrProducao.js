@@ -4,6 +4,7 @@ import ListaPedidos from '../../componentes/Pedidos/Pedidos';
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import Botao from '../../componentes/Botao/Botao';
 import { atualizarStatusPedido } from '../../API/Pedidos';
+import TokenExpiracao from '../../Autenticacao/Auth';
 
 export default function AgrProducao() {
   const concluirPedido = async (pedido) => {
@@ -23,6 +24,7 @@ export default function AgrProducao() {
           Voltar
         </Link>
       </nav>
+      <TokenExpiracao />
       <MenuNavegacao texto="aguardando produção" imagemSrc="preparando-pedido.png" />
       <ListaPedidos
         status="pendente"
