@@ -1,12 +1,8 @@
-const API_URL = 'https://burger-queen-api-mock-mluz.vercel.app';
+import {
+  API_URL,
+  pegarAuthToken,}
+   from './localStorage/LocalStorageToken.js'
 
-const getAuthToken = () => {
-  const token = localStorage.getItem('authToken');
-  return token;
-};
-
-
-// Função para formatar a data no formato desejado (exemplo: "04-06-2023 11:42")
 const formatarData = (data) => {
   const dia = adicionarZeroEsquerda(data.getDate());
   const mes = adicionarZeroEsquerda(data.getMonth() + 1);
@@ -16,18 +12,16 @@ const formatarData = (data) => {
   return `${dia}-${mes}-${ano} ${horas}:${minutos}`;
 };
 
-// Função auxiliar para adicionar um zero à esquerda de um número menor que 10
 const adicionarZeroEsquerda = (numero) => {
   return numero < 10 ? `0${numero}` : numero;
 };
 
 export const obterPedidos = async () => {
-  const authToken = getAuthToken();
   const response = await fetch(`${API_URL}/orders`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${authToken}`,
+      'Authorization': `Bearer ${pegarAuthToken()}`,
     },
   });
 
@@ -40,7 +34,6 @@ export const obterPedidos = async () => {
 
 
 export const adicionarPedido = async (cliente, mesa, produtos, atendente) => {
-  const authToken = getAuthToken();
   try {
     const pedido = {
       waiter: atendente,
@@ -66,7 +59,7 @@ export const adicionarPedido = async (cliente, mesa, produtos, atendente) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
+        'Authorization': `Bearer ${pegarAuthToken()}`,
       },
       body: JSON.stringify(pedido),
     });
@@ -84,14 +77,13 @@ export const adicionarPedido = async (cliente, mesa, produtos, atendente) => {
 
 
 export const atualizarStatusPedido = async (pedidoId, novoStatus) => {
-  const authToken = getAuthToken();
   try {
     const dataProcessamento = formatarData(new Date());
     const response = await fetch(`${API_URL}/orders/${pedidoId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
+        'Authorization': `Bearer ${pegarAuthToken()}`,
       },
       body: JSON.stringify({
         status: novoStatus,

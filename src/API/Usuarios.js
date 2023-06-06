@@ -1,16 +1,9 @@
-const API_URL = 'https://burger-queen-api-mock-mluz.vercel.app';
-
-const pegarAuthToken = () => {
-  const token = localStorage.getItem('authToken');
-  return token;
-};
-
-const setAuthToken = (token, user) => {
-  if (token && user) {
-    localStorage.setItem('authToken', token);
-    localStorage.setItem('user', JSON.stringify(user));
-  }
-};
+import {
+  API_URL,
+  pegarAuthToken,
+  setAuthToken,
+}
+  from './localStorage/LocalStorageToken.js'
 
 export const login = async (email, password, name) => {
   const response = await fetch(`${API_URL}/login`, {
@@ -61,9 +54,7 @@ export const criarUsuario = async (nome, email, password, role) => {
 
 export const listarUsuarios = async () => {
   try {
-    const authToken = pegarAuthToken();
-
-    if (!authToken) {
+    if (!pegarAuthToken()) {
       throw new Error('Usuário não autenticado');
     }
 
@@ -71,12 +62,12 @@ export const listarUsuarios = async () => {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`
+        'Authorization': `Bearer ${pegarAuthToken()}`
       },
     });
 
     if (!response.ok) {
-      if(response.status === 401) {
+      if (response.status === 401) {
         throw new Error('O token expirou, faça login novamente!');
       }
       throw new Error('Erro ao obter usuários');
@@ -90,9 +81,8 @@ export const listarUsuarios = async () => {
 
 export const deletarUsuario = async (id) => {
   try {
-    const authToken = pegarAuthToken();
 
-    if (!authToken) {
+    if (!pegarAuthToken()) {
       throw new Error('Usuário não autenticado');
     }
 
@@ -100,12 +90,12 @@ export const deletarUsuario = async (id) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`
+        'Authorization': `Bearer ${pegarAuthToken()}`
       }
     });
 
     if (!response.ok) {
-      if(response.status === 401) {
+      if (response.status === 401) {
         throw new Error('O token expirou, faça login novamente!');
       }
       throw new Error('Erro ao deletar usuário');
@@ -117,9 +107,8 @@ export const deletarUsuario = async (id) => {
 
 export const editarUsuario = async (uid, novoUsuario) => {
   try {
-    const authToken = pegarAuthToken();
 
-    if (!authToken) {
+    if (!pegarAuthToken()) {
       throw new Error('Usuário não autenticado');
     }
 
@@ -127,13 +116,13 @@ export const editarUsuario = async (uid, novoUsuario) => {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`
+        'Authorization': `Bearer ${pegarAuthToken()}`
       },
       body: JSON.stringify(novoUsuario)
     });
 
     if (!response.ok) {
-      if(response.status === 401) {
+      if (response.status === 401) {
         throw new Error('O token expirou, faça login novamente!');
       }
       throw new Error('Erro ao editar o usuário');
@@ -152,9 +141,8 @@ const obterNomeUsuario = () => {
   const user = userData ? JSON.parse(userData) : null;
 
   if (authToken && user && user.name) {
-    return user.name; // Retorna o nome do usuário
+    return user.name;
   }
-
   return null;
 };
 export default obterNomeUsuario;
