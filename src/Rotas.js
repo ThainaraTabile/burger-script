@@ -13,11 +13,13 @@ import Produtos from "./Paginas/Adm/PagProdutos/Produtos";
 import AgrProducao from "./Paginas/Cozinha/AgrProducao";
 import PedidosProntos from "./Paginas/Cozinha/PedidosProntos";
 import { PrivateRoute } from "./PrivateRoutes";
+import { ProdutosProvider } from "./contextos/ProdutosContext";
 
 
 function AppRoutes() {
   return (
     <BrowserRouter>
+    <ProdutosProvider>
       <Routes>
 
         <Route index element={<Login />} />
@@ -91,6 +93,7 @@ function AppRoutes() {
         </PrivateRoute>} />
 
       </Routes>
+      </ProdutosProvider>
     </BrowserRouter>
 
   )
