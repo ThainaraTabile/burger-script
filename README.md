@@ -1,4 +1,4 @@
-# Burger-Queen :hamburger:
+# Burger-Script :hamburger:
 
 Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Queen envolve o desenvolvimento de uma interface de pedidos para um restaurante de hambúrgueres, que deve integrar-se com uma API . O objetivo principal é aprender a construir uma interface web utilizando o React. Projeto desenvolvido em parceria com @ThainaraTabile.
 <div align="center">
@@ -34,8 +34,8 @@ Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Queen envo
  
   
 </div>
-
-- [Burger-Queen :hamburger:](#burger-queen-hamburger)
+ 
+- [Burger-Script :hamburger:](#burger-script-hamburger)
   - [1. Sobre o projeto](#1-sobre-o-projeto)
   - [2. Funcionalidades](#2-funcionalidades)
       - [Atendimento](#atendimento)
@@ -47,7 +47,6 @@ Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Queen envo
   - [5. Mock da API](#5-mock-da-api)
   - [6. Testes Unitários](#6-testes-unitários)
   - [7. Testes de Usabilidade e Feedback dos Usuários](#7-testes-de-usabilidade-e-feedback-dos-usuários)
-
 
 
 ## 1. Sobre o projeto
