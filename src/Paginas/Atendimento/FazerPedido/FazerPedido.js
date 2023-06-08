@@ -1,11 +1,12 @@
-import Cardapio from '../../componentes/Cardapio/Cardapio'
-import ResumoPedido from '../../componentes/ResumoPedido/ResumoPedido'
+import Cardapio from '../../../componentes/Cardapio/Cardapio'
+import ResumoPedido from '../../../componentes/ResumoPedido/ResumoPedido'
 import { useState } from 'react'
 import './FazerPedido.css'
 import { Link } from 'react-router-dom'
-import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao'
+import MenuNavegacao from '../../../componentes/MenuNavegacao/MenuNavegacao'
+import TokenExpiracao from '../../../Autenticacao/Auth'
 
-import TokenExpiracao from '../../Autenticacao/Auth'
+
 
 const FazerPedido = () => {
   const [produtosSelecionados, setProdutosSelecionados] = useState([]);

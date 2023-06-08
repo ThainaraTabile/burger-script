@@ -4,7 +4,6 @@ import BtnIncrementaDecrementa from '../BtnIncrementaDecrementa/index';
 
 const ItensCardapio = ({ tipoProduto, manipularProdutoSelecionado }) => {
   const { categorias } = useContext(ProdutosContext);
-
   const incrementarContador = (produto) => {
     manipularProdutoSelecionado(produto, 'incrementar');
   };

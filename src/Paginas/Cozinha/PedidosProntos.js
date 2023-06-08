@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ListaPedidos from '../../componentes/Pedidos/Pedidos';
+import ListaDePedidos from '../../componentes/ListaDePedidos/ListaDePedidos';
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import Botao from '../../componentes/Botao/Botao';
 import { atualizarStatusPedido } from '../../API/Pedidos';
@@ -29,7 +29,7 @@ export default function PedidosProntos() {
        texto="pronto para servir" 
        imagemSrc="pronto-para-servir.png" 
        />
-      <ListaPedidos
+      <ListaDePedidos
         status="pronto para entrega"
         props={'Processamento'}
         btnStatus={(pedido) => (

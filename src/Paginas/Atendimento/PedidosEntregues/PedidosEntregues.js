@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ListaPedidos from '../../componentes/Pedidos/Pedidos';
-import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
-import TokenExpiracao from '../../Autenticacao/Auth';
+import ListaDePedidos from '../../../componentes/ListaDePedidos/ListaDePedidos';
+import MenuNavegacao from '../../../componentes/MenuNavegacao/MenuNavegacao';
+import TokenExpiracao from '../../../Autenticacao/Auth';
 
 export default function PedidosEntregues() {
  
@@ -19,7 +19,7 @@ export default function PedidosEntregues() {
         texto="pedidos entregues"
         imagemSrc="pedido-entregue.png"
       />
-      <ListaPedidos
+      <ListaDePedidos
         status="entregue"
         props={'Data de entrega'}
         btnStatus={(pedido) => (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ListaPedidos from '../../componentes/Pedidos/Pedidos';
+import ListaDePedidos from '../../componentes/ListaDePedidos/ListaDePedidos';
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import Botao from '../../componentes/Botao/Botao';
 import { atualizarStatusPedido } from '../../API/Pedidos';
@@ -26,7 +26,7 @@ export default function AgrProducao() {
       </nav>
       <TokenExpiracao />
       <MenuNavegacao texto="aguardando produção" imagemSrc="preparando-pedido.png" />
-      <ListaPedidos
+      <ListaDePedidos
         status="pendente"
         // props={'Data de envio'}
         btnStatus={(pedido) => (

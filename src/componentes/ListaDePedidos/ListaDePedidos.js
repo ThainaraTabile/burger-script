@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { obterPedidos } from '../../API/Pedidos';
-import './Pedidos.css';
+import './ListaDePedidos.css';
 import CardTerminal from '../CardTerminal/CardTerminal';
 
-const ListaPedidos = ({ status, btnStatus, props }) => {
+const ListaDePedidos = ({ status, btnStatus, props }) => {
   const [pedidos, setPedidos] = useState([]);
   console.log(pedidos);
 
@@ -86,4 +86,4 @@ const ListaPedidos = ({ status, btnStatus, props }) => {
   );
 };
 
-export default ListaPedidos;
+export default ListaDePedidos;
