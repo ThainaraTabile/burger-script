@@ -1,6 +1,6 @@
 import './Cardapio.css'
 import ItensCardapio from './ItensCardapio';
-import MenuHamburger from './MenuHamburger';
+import MenuHamburger from '../MenuHamburger/MenuHamburger';
 
 
 const Cardapio = ({ manipularProdutoSelecionado }) => {

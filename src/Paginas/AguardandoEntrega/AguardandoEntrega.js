@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ListaPedidos from '../../componentes/Pedidos/Pedidos';
+import ListaDePedidos from '../../componentes/ListaDePedidos/ListaDePedidos';
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import { atualizarStatusPedido } from '../../API/Pedidos';
 import Botao from '../../componentes/Botao/Botao';
@@ -26,7 +26,7 @@ export default function AguardandoEntrega() {
       </nav>
       <TokenExpiracao />
       <MenuNavegacao texto="aguardando entrega" imagemSrc="relogio.png" />
-      <ListaPedidos
+      <ListaDePedidos
         status="pronto para entrega"
         props={'Data de envio:'}
         btnStatus={(pedido) => (
