@@ -14,12 +14,14 @@ import AgrProducao from "./Paginas/Cozinha/AgrProducao";
 import PedidosProntos from "./Paginas/Cozinha/PedidosProntos";
 import { PrivateRoute } from "./PrivateRoutes";
 import { ProdutosProvider } from "./contextos/ProdutosContext";
+import { ModalProvider } from "./contextos/ModalContext";
 
 
 function AppRoutes() {
   return (
     <BrowserRouter>
     <ProdutosProvider>
+      <ModalProvider>
       <Routes>
 
         <Route index element={<Login />} />
@@ -93,6 +95,7 @@ function AppRoutes() {
         </PrivateRoute>} />
 
       </Routes>
+      </ModalProvider>
       </ProdutosProvider>
     </BrowserRouter>
 
