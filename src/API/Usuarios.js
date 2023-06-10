@@ -135,7 +135,7 @@ export const editarUsuario = async (uid, novoUsuario) => {
 };
 
 
-const obterNomeUsuario = () => {
+export const obterNomeUsuario = () => {
   const authToken = localStorage.getItem('authToken');
   const userData = localStorage.getItem('user');
   const user = userData ? JSON.parse(userData) : null;
@@ -145,4 +145,3 @@ const obterNomeUsuario = () => {
   }
   return null;
 };
-export default obterNomeUsuario;

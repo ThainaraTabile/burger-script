@@ -3,7 +3,7 @@ import './Atendimento.css'
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import Footer from '../../componentes/Footer/Footer';
 import Header from '../../componentes/Header/Header';
-import obterNomeUsuario from '../../API/Usuarios';
+import {obterNomeUsuario} from '../../API/Usuarios';
 import TokenExpiracao from '../../Autenticacao/Auth';
 
 export default function Atendimento() {

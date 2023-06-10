@@ -5,13 +5,43 @@ import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import Botao from '../../componentes/Botao/Botao';
 import { atualizarStatusPedido } from '../../API/Pedidos';
 import TokenExpiracao from '../../Autenticacao/Auth';
+import { useState } from 'react';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    textAlign: 'center',
+    justifyContent: 'center',
+    border: '1px solid #ccc',
+    background: 'var(--azul-escuro)',
+    overflow: 'auto',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '4px',
+    outline: 'none',
+    padding: '20px',
+    maxWidth: '300px',
+  },
+};
 
 export default function PedidosProntos() {
+  const [modalAberto, setModalAberto] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+
+  const fecharModal = () => {
+    setModalAberto(false);
+    window.location.reload();
+  };
+
   const enviarPedido = async (pedido) => {
     try {
       await atualizarStatusPedido(pedido.id, 'enviado');
-      alert('Pedido enviado com sucesso!');
-      window.location.reload();
+      setModalAberto(true);
+      setModalMessage('Pedido enviado com sucesso!');
+      
     } catch (error) {
       console.error('Erro ao enviar pedido:', error);
     }
@@ -36,6 +66,14 @@ export default function PedidosProntos() {
           <Botao onClick={() => enviarPedido(pedido)}>enviar</Botao>
         )}
       />
+       <Modal
+        isOpen={modalAberto}
+        onRequestClose={fecharModal}
+        style={customStyles}
+      >
+        <h2 className='msg-modal'>{modalMessage}</h2>
+        <Botao onClick={fecharModal}>OK</Botao>
+      </Modal>
     </section>
   );
 }
