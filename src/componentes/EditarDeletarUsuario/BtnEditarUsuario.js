@@ -18,6 +18,8 @@ export default function BtnEditarUsuario({ usuario, aoSalvar, onCancel }) {
 
   return (
     <>
+    <div className="input-editar-usuario">
+      
       <input
         type="text"
         value={name}
@@ -33,6 +35,7 @@ export default function BtnEditarUsuario({ usuario, aoSalvar, onCancel }) {
         value={role}
         onChange={(e) => setCargo(e.target.value)}
       />
+      </div>
       <button className="btn-lista-usuarios" onClick={btnSalvar}>
         Salvar
       </button>
