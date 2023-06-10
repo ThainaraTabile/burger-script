@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Botao from "../Botao/Botao";
 import './estilo.css'
+import DeleteIcon from '@mui/icons-material/Delete';
+
 const customStyles = {
   content: {
     position: 'absolute',
@@ -30,7 +32,7 @@ export default function BtnDeletarUsuario({ usuario, onDelete }) {
   
   const abrirModal = () => {
     setModalAberto(true);
-    setModalMessage("");
+    setModalMessage('');
   };
 
   const fecharModal = () => {
@@ -49,7 +51,7 @@ export default function BtnDeletarUsuario({ usuario, onDelete }) {
   return (
     <>
       <button className="btn-lista-usuarios" onClick={abrirModal}>
-        Deletar
+      <DeleteIcon />
       </button>
       <Modal
         isOpen={modalAberto}
@@ -73,3 +75,5 @@ export default function BtnDeletarUsuario({ usuario, onDelete }) {
     </>
   );
 }
+
+
