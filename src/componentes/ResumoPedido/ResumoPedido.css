@@ -80,12 +80,15 @@ tbody tr:hover {
   background-color: green;
   text-transform: uppercase;
 }
-.logo-modal{
-  max-width: 30rem;
+
+.msg-modal{
+  color: var(--amarelo);
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
-.msg-sucesso-modal{
-  color: var(--verde);
-}
+
+
+
 
 @media (max-width: 600px) {
   .conteudo-tabela-resumo {

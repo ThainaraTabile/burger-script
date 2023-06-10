@@ -50,7 +50,8 @@ color: var(--cor-da-fonte);
 
 .li-status{
   margin-top: 1rem;
-  color: var(--verde)
+  color: var(--verde);
+  text-transform: uppercase;
 }
 .dados-pedidos-superior{
   text-align: left;

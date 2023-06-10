@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../../componentes/Header/Header';
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import Footer from '../../componentes/Footer/Footer';
-import obterNomeUsuario from '../../API/Usuarios';
+import { obterNomeUsuario} from '../../API/Usuarios';
 import TokenExpiracao from '../../Autenticacao/Auth';
 
 export default function Administracao() {

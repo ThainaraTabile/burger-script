@@ -5,8 +5,6 @@ import { useState } from 'react';
 
 const BtnIncrementaDecrementa = ({ incrementa, decrementa }) => {
 
-
-
   const [count, setCount] = useState(0);
 
   const incrementarContador = () => {

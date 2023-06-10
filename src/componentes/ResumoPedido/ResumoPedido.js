@@ -1,26 +1,38 @@
 import './ResumoPedido.css';
 import CardTerminal from '../CardTerminal/CardTerminal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { adicionarPedido } from '../../API/Pedidos';
 import Botao from '../Botao/Botao';
-import obterNomeUsuario from '../../API/Usuarios';
+import { obterNomeUsuario } from '../../API/Usuarios';
 import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    textAlign: 'center',
+    justifyContent: 'center',
+    border: '1px solid #ccc',
+    background: 'var(--azul-escuro)',
+    overflow: 'auto',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '4px',
+    outline: 'none',
+    padding: '20px',
+    maxWidth: '300px',
+  },
+};
+
+Modal.setAppElement('#root');
 
 const ResumoPedido = ({ produtosSelecionados }) => {
   const [nomeCliente, setNomeCliente] = useState('');
   const [mesa, setMesa] = useState('');
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [dataPedido, setDataPedido] = useState('');
-
-
-  Modal.setAppElement('#root');
-
-  useEffect(() => {
-    if (!modalIsOpen) {
-      setNomeCliente('');
-      setMesa('');
-    }
-  }, [modalIsOpen]);
+  const [nomeAtendente, setNomeAtendente] = useState(obterNomeUsuario());
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const enviarPedido = async () => {
     if (nomeCliente && mesa && produtosSelecionados.length > 0) {
@@ -33,32 +45,29 @@ const ResumoPedido = ({ produtosSelecionados }) => {
           total: produto.total,
         }));
 
-        const novoPedido = await adicionarPedido(
-          nomeCliente,
-          mesa,
-          produtos,
-          dataPedido,
-          obterNomeUsuario()
-        );
+        const novoPedido = await adicionarPedido(nomeCliente, mesa, produtos, nomeAtendente);
         console.log('Pedido registrado:', novoPedido);
-        setDataPedido(novoPedido.dateEntry)
 
-        setIsOpen(true);
+        setTimeout(() => {
+          setNomeCliente('');
+          setMesa('');
+          setNomeAtendente('');
+         
+        });
+        setModalIsOpen(true);
+        setModalMessage('Pedido registrado com sucesso!');
       } catch (error) {
         console.error('Erro ao registrar pedido:', error);
       }
     } else {
-      alert('Preencha todos os campos do pedido antes de enviar.');
+      setModalIsOpen(true);
+      setModalMessage('Para que o pedido seja registrado, é necessário preencher todos os campos!');
     }
   };
-
-  const handleModalClose = () => {
-    setIsOpen(false);
-    setNomeCliente('');
-    setMesa('');
+  const closeModal = () => {
+    setModalIsOpen(false);
     window.location.reload();
   };
-
   return (
     <>
       <CardTerminal>
@@ -67,9 +76,11 @@ const ResumoPedido = ({ produtosSelecionados }) => {
           Resumo do Pedido
           <span className="chaves">{"}"}</span>
         </h2>
-        <div className="container-label-input">
-          <div className="linha-label-input">
-            <label htmlFor="mesa">mesa:</label>
+        <div className='container-label-input'>
+          <div className='linha-label-input'>
+            <label htmlFor='mesa'>
+              mesa:
+            </label>
             <span className="terminal-cursor"></span>
             <input
               className="inputResumoPedido"
@@ -78,8 +89,8 @@ const ResumoPedido = ({ produtosSelecionados }) => {
               onChange={(e) => setMesa(e.target.value)}
             />
           </div>
-          <div className="linha-label-input">
-            <label htmlFor="cliente">
+          <div className='linha-label-input'>
+            <label htmlFor='cliente'>
               cliente:<span className="terminal-cursor"></span>
             </label>
             <input
@@ -126,28 +137,14 @@ const ResumoPedido = ({ produtosSelecionados }) => {
 
         <Botao onClick={enviarPedido}>Enviar</Botao>
       </CardTerminal>
-
       <Modal
-        className="modal"
         isOpen={modalIsOpen}
-        style={{
-          overlay: {
-            backgroundColor: 'var(--nude)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textAlign: 'center',
-          },
-        }}
+        onRequestClose={closeModal}
+        contentLabel="Pedido Entregue"
+        style={customStyles}
       >
-        <img src='../../imagens/tela.png' 
-        className='logo-modal'
-        alt='Logo Burger Script'/>
-        <h2 className='msg-sucesso-modal'> Pedido enviado com sucesso! </h2>
-        <Botao 
-        onClick={handleModalClose}>
-          OK
-          </Botao>
+         <h2 className='msg-modal'>{modalMessage}</h2>
+        <Botao onClick={closeModal}>OK</Botao>
       </Modal>
     </>
   );
