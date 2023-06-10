@@ -83,7 +83,7 @@ import { differenceInMinutes } from 'date-fns';
 import Modal from "react-modal";
 import Botao from '../componentes/Botao/Botao';
 import './Auth.css';
-
+import { useNavigate } from 'react-router-dom';
 
 const customStyles = {
   content: {
@@ -133,6 +133,8 @@ export const verificarAutenticacao = () => {
 function TokenExpiracao() {
   const [tempoRestante, setTempoRestante] = useState(null);
   const [modalAberto, setModalAberto] = useState(false);
+  
+  const navigate = useNavigate()
 
   useEffect(() => {
     const authToken = localStorage.getItem('authToken');
@@ -143,11 +145,13 @@ function TokenExpiracao() {
       const dataExpiracao = new Date(expiracaoDoToken);
 
       const atualizarTempoRestante = () => {
+
         const dataAtual = new Date();
         const diferencaEmMinutos = differenceInMinutes(dataExpiracao, dataAtual);
         const horas = Math.floor(diferencaEmMinutos / 60);
         const minutos = diferencaEmMinutos % 60;
         let tempoRestanteFormatado = '';
+
         if (horas > 0) {
           tempoRestanteFormatado = `Seu token expira em ${horas}h ${minutos}min!`;
         } else {
@@ -155,6 +159,7 @@ function TokenExpiracao() {
         }
         setTempoRestante(tempoRestanteFormatado);
       };
+     
 
       atualizarTempoRestante();
 
@@ -174,6 +179,8 @@ function TokenExpiracao() {
 
   const fecharModal = () => {
     setModalAberto(false);
+    navigate('/')
+    
   };
 
   return (
@@ -187,7 +194,7 @@ function TokenExpiracao() {
         contentLabel="Token Expirado"
         style={customStyles}
       >
-        <h2>O token expirou!</h2>
+        <h2 className='msg-modal'>O token expirou!</h2>
         <p>Por favor, faça login novamente.</p>
         <div className="btn-modal">
           <Botao onClick={fecharModal}>OK</Botao>
