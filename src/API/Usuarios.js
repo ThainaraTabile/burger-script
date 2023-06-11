@@ -16,8 +16,6 @@ export const login = async (email, password, name) => {
   if (response.status === 400) {
     throw new Error('Senha incorreta ou usuário não cadastrado!');
   }
-
-
   const data = await response.json();
   const authToken = data.accessToken;
   const user = data.user;
