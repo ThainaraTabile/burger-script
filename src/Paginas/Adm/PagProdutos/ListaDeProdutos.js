@@ -1,20 +1,27 @@
 import React, { useContext } from 'react';
 import { deletarProduto } from '../../../API/Produtos';
 import './Produto.css';
-import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
-import DeletarProduto from '../../../componentes/DeletarEditarProduto/DeletarProduto';
+import BtnDeletarProduto from '../../../componentes/DeletarEditarProduto/BtnDeletarProduto';
 import { ProdutosContext } from '../../../contextos/ProdutosContext';
+import BtnEditarProduto from '../../../componentes/DeletarEditarProduto/BtnEditarProduto';
 
 const ListaDeProdutos = (props) => {
   const { tipoProduto } = props;
-  const { produtos } = useContext(ProdutosContext);
+  const { produtos, editarDadosProduto } = useContext(ProdutosContext);
 
-  const onDelete = async (id) => {
+  const aoDeletar = async (id) => {
     try {
       await deletarProduto(id);
-      window.location.reload();
     } catch (error) {
       console.error("Erro ao deletar Produto:", error);
+    }
+  };
+
+  const aoEditar = async (id, novoDado) => {
+    try {
+      await editarDadosProduto(id, novoDado);
+    } catch (error) {
+      console.error("Erro ao editar Produto:", error);
     }
   };
 
@@ -29,7 +36,6 @@ const ListaDeProdutos = (props) => {
           <dt className='tabela-produtos-direita'>Quantidade</dt>
           <dt>Ações</dt>
         </div>
-
         {produtos
           .filter((produto) => (!tipoProduto || produto.type === tipoProduto))
           .map((produto) => (
@@ -38,10 +44,10 @@ const ListaDeProdutos = (props) => {
               <span className='tabela-produtos-esquerda'>{produto.name}</span>
               <span className='tabela-produtos-direita'>R$ {produto.price}</span>
               <span>{produto.qty}</span>
-              <span className='icone-deletar'>
-                <ModeEditTwoToneIcon />
-                <DeletarProduto produto={produto} onDelete={() => onDelete(produto.id)} />
-              </span>
+
+              <BtnEditarProduto produto={produto} onEditar={(novoDado) => aoEditar(produto.id, novoDado)} />
+              <BtnDeletarProduto produto={produto} onDelete={() => aoDeletar(produto.id)} />
+
             </dd>
           ))}
       </dl>
@@ -50,4 +56,3 @@ const ListaDeProdutos = (props) => {
 };
 
 export default ListaDeProdutos;
-

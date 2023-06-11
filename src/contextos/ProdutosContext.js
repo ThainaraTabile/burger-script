@@ -8,6 +8,7 @@ const ProdutosProvider = ({ children }) => {
   const [categorias, setCategorias] = useState([]);
   const [tipoProduto, setTipoProduto] = useState(null);
 
+
   useEffect(() => {
     const buscarProdutos = async () => {
       try {
@@ -51,3 +52,5 @@ const ProdutosProvider = ({ children }) => {
 };
 
 export { ProdutosContext, ProdutosProvider };
+
+
