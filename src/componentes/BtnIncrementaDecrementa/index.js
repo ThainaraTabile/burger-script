@@ -15,9 +15,7 @@ const BtnIncrementaDecrementa = ({ incrementa, decrementa }) => {
   const decrementarContador = () => {
     if (count > 0) {
       setCount(count - 1);
-
       decrementa();
-
     }
   };
 

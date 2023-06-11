@@ -1,68 +1,96 @@
-/* eslint-disable testing-library/prefer-presence-queries */
-/* eslint-disable testing-library/prefer-screen-queries */
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { ProdutosContext } from '../contextos/ProdutosContext';
 import ItensCardapio from '../componentes/Cardapio/ItensCardapio';
-import { obterProdutos } from '../API/Produtos';
-
-jest.mock('../API/Produtos');
+import userEvent from '@testing-library/user-event';
 
 describe('ItensCardapio', () => {
-  it('deve renderizar corretamente os itens do cardápio', async () => {
-    const produtosMock = [
-      {
-        id: 1,
-        name: 'Hambúrguer',
-        price: 10,
-        category: 'Comida',
-        type: 'Lanche',
-      },
-      {
-        id: 2,
-        name: 'Batata Frita',
-        price: 5,
-        category: 'Comida',
-        type: 'Acompanhamento',
-      },
-    ];
+  it('deve exibir os produtos corretos de uma determinada categoria', () => {
+    const produtosMock = {
+      categoria1: [
+        { id: 1, name: 'Produto 1', type: 'café da manhã', price: 10, image: 'imagem1.jpg' },
+        { id: 2, name: 'Produto 2', type: 'café da manhã', price: 15, image: 'imagem2.jpg' },
+      ],
+      categoria2: [
+        { id: 3, name: 'Produto 3', type: 'menu principal', price: 20, image: 'imagem3.jpg' },
+        { id: 4, name: 'Produto 4', type: 'menu principal', price: 25, image: 'imagem4.jpg' },
+      ],
+    };
 
-    obterProdutos.mockResolvedValue(produtosMock);
-
-    const handleProdutoSelecionadoMock = jest.fn();
-
-    const { getByText, getByTestId } = render(
-      <ItensCardapio tipoProduto="Lanche" handleProdutoSelecionado={handleProdutoSelecionadoMock} />
+    render(
+      <ProdutosContext.Provider value={{ categorias: produtosMock }}>
+        <ItensCardapio tipoProduto="café da manhã" manipularProdutoSelecionado={() => {}} />
+      </ProdutosContext.Provider>
     );
 
-    expect(getByText('Comida')).toBeInTheDocument();
-    expect(getByText('Lanche')).toBeInTheDocument();
+    const produtosCafeDaManha = screen.getAllByTestId('produto-item');
 
-    const hambúrguerName = getByText('Hambúrguer');
-    const hambúrguerPrice = getByText('R$ 10');
-    const hambúrguerIncrementButton = getByTestId('increment-button-1');
-    const hambúrguerDecrementButton = getByTestId('decrement-button-1');
-
-    expect(hambúrguerName).toBeInTheDocument();
-    expect(hambúrguerPrice).toBeInTheDocument();
-    expect(hambúrguerIncrementButton).toBeInTheDocument();
-    expect(hambúrguerDecrementButton).toBeInTheDocument();
-
-    fireEvent.click(hambúrguerIncrementButton);
-    fireEvent.click(hambúrguerIncrementButton);
-    fireEvent.click(hambúrguerDecrementButton);
-
-    expect(handleProdutoSelecionadoMock).toHaveBeenCalledTimes(2);
-    expect(handleProdutoSelecionadoMock).toHaveBeenCalledWith({
-      id: 1,
-      name: 'Hambúrguer',
-      price: 10,
-      category: 'Comida',
-      type: 'Lanche',
-      quantity: 1,
-    });
-
-    expect(getByText('Batata Frita')).not.toBeInTheDocument();
-    expect(getByText('R$ 5')).not.toBeInTheDocument();
+    expect(produtosCafeDaManha).toHaveLength(2);
+    expect(produtosCafeDaManha[0]).toHaveTextContent('Produto 1');
+    expect(produtosCafeDaManha[1]).toHaveTextContent('Produto 2');
   });
 
+  it('deve chamar a função manipularProdutoSelecionado corretamente', () => {
+    const produtosMock = {
+      categoria1: [
+        { id: 1, name: 'Produto 1', type: 'café da manhã', price: 10, image: 'imagem1.jpg' },
+      ],
+    };
+
+    const manipularProdutoSelecionadoMock = jest.fn();
+
+    render(
+      <ProdutosContext.Provider value={{ categorias: produtosMock }}>
+        <ItensCardapio
+          tipoProduto="café da manhã"
+          manipularProdutoSelecionado={manipularProdutoSelecionadoMock}
+        />
+      </ProdutosContext.Provider>
+    );
+
+    const incrementaBtn = screen.getByTestId('btn-incrementa');
+    const decrementaBtn = screen.getByTestId('btn-decrementa');
+
+    incrementaBtn.click();
+    expect(manipularProdutoSelecionadoMock).toHaveBeenCalledWith({
+      id: 1,
+      name: 'Produto 1',
+      type: 'café da manhã',
+      price: 10,
+      image: 'imagem1.jpg',
+      quantity: 1,
+    }, 'incrementar');
+
+    decrementaBtn.click();
+    expect(manipularProdutoSelecionadoMock).toHaveBeenCalledWith({
+      id: 1,
+      name: 'Produto 1',
+      type: 'café da manhã',
+      price: 10,
+      image: 'imagem1.jpg',
+      quantity: -1,
+    }, 'decrementar');
+  });
+});
+
+test('deve chamar a função manipularProdutoSelecionado corretamente', () => {
+  // Cria uma função mock para substituir a função manipularProdutoSelecionado
+  const manipularProdutoSelecionadoMock = jest.fn();
+
+  // Renderiza o componente com a função mock
+  render(
+    <ItensCardapio
+      tipoProduto="café da manhã"
+      manipularProdutoSelecionado={manipularProdutoSelecionadoMock}
+    />
+  );
+
+  // Simula um clique no botão de incremento
+  const incrementaBtn = screen.getByText('+');
+  userEvent.click(incrementaBtn);
+
+  // Verifica se a função mock foi chamada corretamente
+  expect(manipularProdutoSelecionadoMock).toHaveBeenCalledWith(
+    expect.objectContaining({ quantity: 1 }), 'incrementar'
+  );
 });
