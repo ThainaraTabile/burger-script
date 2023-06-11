@@ -30,3 +30,27 @@
     text-transform: uppercase;
     cursor: pointer;
 }
+
+.secao-editar-produto {
+    margin-left: -2rem;
+    text-align: center;
+    background-color: var(--nude);
+    border: 6px solid var(--nude);
+    
+    
+}
+.secao-editar-produto input{
+    color: var(--azul-escuro);
+    background: transparent;
+    text-align: center;
+    border-style: none;
+    font-weight: bold;
+}
+
+.secao-editar-produto button{ 
+    background: var(--verde);
+    border-radius:  5px;
+    border-style: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}

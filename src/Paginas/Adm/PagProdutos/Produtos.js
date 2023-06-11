@@ -4,6 +4,7 @@ import ListaDeProdutos from "./ListaDeProdutos";
 import MenuNavegacao from "../../../componentes/MenuNavegacao/MenuNavegacao";
 import TokenExpiracao from "../../../Autenticacao/Auth";
 
+
 export default function Produtos(){
     return(
         <section className='telaFazerPedido'>
@@ -15,9 +16,10 @@ export default function Produtos(){
           texto='produtos'
           imagemSrc='lista-de-produtos.png'
         />
+        
             <FormularioProdutos />
             <ListaDeProdutos />
-       
+            
         </section>
     )
 }
