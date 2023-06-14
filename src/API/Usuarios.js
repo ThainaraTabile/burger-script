@@ -3,6 +3,7 @@ import {
   pegarAuthToken,
   setAuthToken,
 } from './localStorage/LocalStorageToken.js';
+import fetch from 'node-fetch';
 
 export const login = async (email, password, name) => {
   const response = await fetch(`${API_URL}/login`, {
@@ -46,32 +47,58 @@ export const criarUsuario = async (nome, email, password, role) => {
   }
 };
 
+// export const listarUsuarios = async () => {
+//   try {
+//     if (!pegarAuthToken()) {
+//       throw new Error('Usuário não autenticado');
+//     }
+
+//     const response = await fetch(`${API_URL}/users`, {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `Bearer ${pegarAuthToken()}`,
+//       },
+//     });
+
+//     if (!response.ok) {
+//       if (response.status === 401) {
+//         throw new Error('O token expirou, faça login novamente!');
+//       }
+//       throw new Error('Erro ao obter usuários');
+//     }
+
+//     return response.json();
+//   } catch (error) {
+//     throw new Error('Erro ao obter usuários');
+//   }
+// };
+
+
 export const listarUsuarios = async () => {
-  try {
-    if (!pegarAuthToken()) {
-      throw new Error('Usuário não autenticado');
+  if (!pegarAuthToken()) {
+    throw new Error('Usuário não autenticado');
+  }
+
+  const response = await fetch(`${API_URL}/users`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${pegarAuthToken()}`,
+    },
+  });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error('O token expirou, faça login novamente!');
     }
-
-    const response = await fetch(`${API_URL}/users`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${pegarAuthToken()}`,
-      },
-    });
-
-    if (!response.ok) {
-      if (response.status === 401) {
-        throw new Error('O token expirou, faça login novamente!');
-      }
-      throw new Error('Erro ao obter usuários');
-    }
-
-    return response.json();
-  } catch (error) {
     throw new Error('Erro ao obter usuários');
   }
+
+  return response.json();
 };
+
+
 
 export const deletarUsuario = async (id) => {
   try {
