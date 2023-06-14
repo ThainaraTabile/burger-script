@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuNavegacao Deve renderizar um link com a class link 1`] = `
+Array [
+  <a
+    class="link"
+    href="/"
+  >
+    <img
+      alt="icone de undefined"
+      class="icones"
+      src="../imagens/icones/undefined"
+    />
+  </a>,
+]
+`;

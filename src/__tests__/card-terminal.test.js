@@ -1,9 +1,7 @@
-/* eslint-disable testing-library/prefer-screen-queries */
-import React from 'react';
-import { render } from '@testing-library/react';
-import CardTerminal from '../componentes/CardTerminal/CardTerminal';
+import { render, screen } from '@testing-library/react';
+import { expect } from '@jest/globals';
 import '@testing-library/jest-dom/extend-expect';
-
+import CardTerminal from '../componentes/CardTerminal/CardTerminal';
 
 describe('CardTerminal', () => {
   test('renderiza corretamente', () => {
@@ -12,4 +10,3 @@ describe('CardTerminal', () => {
     expect(cardContent).toBeInTheDocument();
   });
 });
-

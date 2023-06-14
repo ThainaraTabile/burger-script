@@ -31,7 +31,7 @@
 //   };
 
 //   return (
-  
+
 //     <ModalContext.Provider
 //       value={{ modalAberto, setModalAberto, modalMessage, setModalMessage, fecharModal, customStyles }}
 //     >
@@ -76,7 +76,14 @@ export const ModalProvider = ({ children }) => {
 
   return (
     <ModalContext.Provider
-      value={{ modalAberto, setModalAberto, modalMessage, setModalMessage, fecharModal }}>
+      value={{
+        modalAberto,
+        setModalAberto,
+        modalMessage,
+        setModalMessage,
+        fecharModal,
+      }}
+    >
       {children}
       <Modal
         isOpen={modalAberto}

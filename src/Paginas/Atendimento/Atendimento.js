@@ -1,47 +1,45 @@
 import { Link } from 'react-router-dom';
-import './Atendimento.css'
+import './Atendimento.css';
 import MenuNavegacao from '../../componentes/MenuNavegacao/MenuNavegacao';
 import Footer from '../../componentes/Footer/Footer';
 import Header from '../../componentes/Header/Header';
-import {obterNomeUsuario} from '../../API/Usuarios';
+import { obterNomeUsuario } from '../../API/Usuarios';
 import TokenExpiracao from '../../Autenticacao/Auth';
 
 export default function Atendimento() {
   const nomeUsuario = obterNomeUsuario();
-  console.log(nomeUsuario)
+  console.log(nomeUsuario);
   return (
     <>
-      <Header
-        msgBoasVindas={`Olá, ${nomeUsuario}`} />
-      <section className='telaAtendimento'>
-        <nav className='botaoSair'>
-          <Link to='/' className='botaoSair'>Sair</Link>
+      <Header msgBoasVindas={`Olá, ${nomeUsuario}`} />
+      <section className="telaAtendimento">
+        <nav className="botaoSair">
+          <Link to="/" className="botaoSair">
+            Sair
+          </Link>
         </nav>
         <TokenExpiracao />
 
         <MenuNavegacao
-          to='/fazerpedido'
-          texto='registrar pedido'
-          imagemSrc='fazer-pedido.png'
+          to="/fazerpedido"
+          texto="registrar pedido"
+          imagemSrc="fazer-pedido.png"
         />
         <MenuNavegacao
-          to='/aguardandoentrega'
-          texto='aguardando entrega'
-          imagemSrc='relogio.png'
+          to="/aguardandoentrega"
+          texto="aguardando entrega"
+          imagemSrc="relogio.png"
         />
         <MenuNavegacao
-          to='/pedidosentregues'
-          texto='pedidos entregues'
-          imagemSrc='pedido-entregue.png'
+          to="/pedidosentregues"
+          texto="pedidos entregues"
+          imagemSrc="pedido-entregue.png"
         />
-
       </section>
       <Footer
-        imagemSrc='../imagens/img-footer/1.png'
-        imagemAlt='Banner atendimento'
+        imagemSrc="../imagens/img-footer/1.png"
+        imagemAlt="Banner atendimento"
       />
     </>
-
-
   );
 }

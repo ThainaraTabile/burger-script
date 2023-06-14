@@ -1,4 +1,4 @@
-/* eslint-disable testing-library/prefer-screen-queries */
+
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import BtnIncrementaDecrementa from '../componentes/BtnIncrementaDecrementa';
@@ -32,7 +32,10 @@ test('Não decrementa abaixo de zero', () => {
   const incrementaMock = jest.fn();
   const decrementaMock = jest.fn();
   const { getByText } = render(
-    <BtnIncrementaDecrementa incrementa={incrementaMock} decrementa={decrementaMock} />
+    <BtnIncrementaDecrementa
+      incrementa={incrementaMock}
+      decrementa={decrementaMock}
+    />
   );
 
   const btnDecrementa = getByText('-');
@@ -41,4 +44,3 @@ test('Não decrementa abaixo de zero', () => {
   expect(incrementaMock).not.toHaveBeenCalled();
   expect(decrementaMock).not.toHaveBeenCalled();
 });
-

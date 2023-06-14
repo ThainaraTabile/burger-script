@@ -1,8 +1,7 @@
-
-import FormularioAdmin from "../Formulario/FormularioAdmin";
-import { Link } from "react-router-dom";
-import MenuNavegacao from "../MenuNavegacao/MenuNavegacao";
-import TokenExpiracao from "../../Autenticacao/Auth";
+import FormularioAdmin from '../Formulario/FormularioAdmin';
+import { Link } from 'react-router-dom';
+import MenuNavegacao from '../MenuNavegacao/MenuNavegacao';
+import TokenExpiracao from '../../Autenticacao/Auth';
 
 export default function CriarUsuario() {
   return (
@@ -14,10 +13,10 @@ export default function CriarUsuario() {
       </nav>
       <TokenExpiracao />
       <MenuNavegacao
-                to='/addcolaborador'
-                texto='adicionar colaborador'
-                imagemSrc='adicionar-colaborador.png'
-            />
+        to="/addcolaborador"
+        texto="adicionar colaborador"
+        imagemSrc="adicionar-colaborador.png"
+      />
       <FormularioAdmin />
     </div>
   );

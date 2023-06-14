@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
-import Botao from "../Botao/Botao";
-import './estilo.css'
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import Botao from '../Botao/Botao';
+import './estilo.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const customStyles = {
@@ -27,9 +27,8 @@ Modal.setAppElement('#root');
 
 export default function BtnDeletarUsuario({ usuario, onDelete }) {
   const [modalAberto, setModalAberto] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
+  const [modalMessage, setModalMessage] = useState('');
 
-  
   const abrirModal = () => {
     setModalAberto(true);
     setModalMessage('');
@@ -44,14 +43,14 @@ export default function BtnDeletarUsuario({ usuario, onDelete }) {
       await onDelete(usuario.id);
       fecharModal();
     } catch (error) {
-      console.error("Erro ao deletar usuário:", error);
+      console.error('Erro ao deletar usuário:', error);
     }
   };
 
   return (
     <>
       <button className="btn-lista-usuarios" onClick={abrirModal}>
-      <DeleteIcon />
+        <DeleteIcon />
       </button>
       <Modal
         isOpen={modalAberto}
@@ -59,20 +58,16 @@ export default function BtnDeletarUsuario({ usuario, onDelete }) {
         contentLabel="Confirmação de Deleção"
         style={customStyles}
       >
-        <h2 className="msg-modal">{modalMessage ||
-         `Você realmente deseja deletar o usuário ${usuario.name} ?`}
-         </h2>
+        <h2 className="msg-modal">
+          {modalMessage ||
+            `Você realmente deseja deletar o usuário ${usuario.name} ?`}
+        </h2>
         <div className=" btns-modal">
-          <Botao onClick={executarDelecaoUsuario}>
-            Sim
-            </Botao>
+          <Botao onClick={executarDelecaoUsuario}>Sim</Botao>
           <p>.</p>
-          <Botao onClick={fecharModal}>
-            Não
-            </Botao>
+          <Botao onClick={fecharModal}>Não</Botao>
         </div>
       </Modal>
     </>
   );
 }
-

@@ -1,13 +1,13 @@
-import {
-  API_URL,
-  pegarAuthToken,
-}
-   from './localStorage/LocalStorageToken.js'
+import { API_URL, pegarAuthToken } from './localStorage/LocalStorageToken.js';
 
-
-export const adicionarProdutos = async (nomeProduto, precoProduto, tipoProduto, categoriaProduto, idProduto) => {
+export const adicionarProdutos = async (
+  nomeProduto,
+  precoProduto,
+  tipoProduto,
+  categoriaProduto,
+  idProduto
+) => {
   try {
-   
     const response = await fetch(`${API_URL}/products`, {
       method: 'POST',
       headers: {
@@ -31,25 +31,21 @@ export const adicionarProdutos = async (nomeProduto, precoProduto, tipoProduto, 
 };
 
 export const obterProdutos = async () => {
-  try {
-    const response = await fetch(`${API_URL}/products`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${pegarAuthToken()}`,
-      },
-    });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
 
+  const response = await fetch(`${API_URL}/products`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${pegarAuthToken()}`,
+    },
+  });
+  const data = await response.json();
+  return data;
+
+};
 
 export const deletarProduto = async (id) => {
   try {
-
     if (!pegarAuthToken()) {
       throw new Error('Usuário não autenticado');
     }
@@ -58,8 +54,8 @@ export const deletarProduto = async (id) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${pegarAuthToken()}`
-      }
+        Authorization: `Bearer ${pegarAuthToken()}`,
+      },
     });
 
     if (!response.ok) {
@@ -72,18 +68,17 @@ export const deletarProduto = async (id) => {
 
 export const editarDadosProduto = async (id, novoDado) => {
   try {
-
     if (!pegarAuthToken()) {
       throw new Error('Usuário não autenticado');
     }
 
     const response = await fetch(`${API_URL}/products/${id}`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${pegarAuthToken()}`
+        Authorization: `Bearer ${pegarAuthToken()}`,
       },
-      body: JSON.stringify(novoDado)
+      body: JSON.stringify(novoDado),
     });
 
     if (!response.ok) {

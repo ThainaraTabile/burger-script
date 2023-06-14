@@ -1,18 +1,15 @@
-
-import FormularioLogin from "../../componentes/Formulario/FormularioLogin"
-import { Logo } from "../../componentes/Logo/Logo"
-import "./Login.css"
-
+import FormularioLogin from '../../componentes/Formulario/FormularioLogin';
+//import { Logo } from '../../componentes/Logo/Logo';
+import Logo from '../../componentes/Logo/Logo';
+import './Login.css';
 
 function Login() {
-    return (
-        <>
-            <Logo />
+  return (
+    <>
+      <Logo />
 
-            <FormularioLogin />
-
-        </>
-
-    )
+      <FormularioLogin />
+    </>
+  );
 }
-export default Login
+export default Login;

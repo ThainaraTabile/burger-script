@@ -8,7 +8,6 @@ const ProdutosProvider = ({ children }) => {
   const [categorias, setCategorias] = useState([]);
   const [tipoProduto, setTipoProduto] = useState(null);
 
-
   useEffect(() => {
     const buscarProdutos = async () => {
       try {
@@ -17,8 +16,10 @@ const ProdutosProvider = ({ children }) => {
           (produto) => !tipoProduto || produto.type === tipoProduto
         );
         setProdutos(produtosFiltradosPorTipo);
-        const produtosAgrupadosPorCategoria = agruparPorCategoria(produtosFiltradosPorTipo);
-        console.log(produtosAgrupadosPorCategoria)
+        const produtosAgrupadosPorCategoria = agruparPorCategoria(
+          produtosFiltradosPorTipo
+        );
+        console.log(produtosAgrupadosPorCategoria);
         setCategorias(produtosAgrupadosPorCategoria);
       } catch (error) {
         console.error(error);
@@ -27,8 +28,6 @@ const ProdutosProvider = ({ children }) => {
 
     buscarProdutos();
   }, [tipoProduto]);
-
-  
 
   const agruparPorCategoria = (produtos) => {
     const categorias = {};
@@ -52,5 +51,3 @@ const ProdutosProvider = ({ children }) => {
 };
 
 export { ProdutosContext, ProdutosProvider };
-
-

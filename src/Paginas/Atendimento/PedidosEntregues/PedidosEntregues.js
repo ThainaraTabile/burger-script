@@ -5,7 +5,6 @@ import MenuNavegacao from '../../../componentes/MenuNavegacao/MenuNavegacao';
 import TokenExpiracao from '../../../Autenticacao/Auth';
 
 export default function PedidosEntregues() {
- 
   return (
     <section className="telaFazerPedido">
       <nav className="botaoSair">
@@ -24,8 +23,8 @@ export default function PedidosEntregues() {
         props={'Data de entrega'}
         btnStatus={(pedido) => (
           <button style={{ cursor: 'default', color: 'black' }} disabled>
-          <strong>PEDIDO ENTREGUE</strong>
-        </button>
+            <strong>PEDIDO ENTREGUE</strong>
+          </button>
         )}
       />
     </section>

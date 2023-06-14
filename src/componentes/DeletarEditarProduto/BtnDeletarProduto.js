@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Modal from 'react-modal';
 import './Style.css';
-import Botao from "../Botao/Botao";
+import Botao from '../Botao/Botao';
 
 const customStyles = {
   content: {
@@ -40,23 +40,30 @@ export default function BtnDeletarProduto({ produto, onDelete }) {
     return (
       <div>
         <h2 className="msg-modal">Produto deletado com sucesso!</h2>
-        <Botao onClick={() => { fecharModal(); window.location.reload(); }}>OK</Botao>
+        <Botao
+          onClick={() => {
+            fecharModal();
+            window.location.reload();
+          }}
+        >
+          OK
+        </Botao>
       </div>
-    )
-  }
+    );
+  };
 
   const executarDelecaoProduto = async () => {
     try {
       await onDelete(produto.id);
       setDeletado(true); // Definir o estado da mensagem de confirmação como verdadeiro
     } catch (error) {
-      console.error("Erro ao deletar produto", error);
+      console.error('Erro ao deletar produto', error);
     }
   };
 
   return (
     <>
-      <button className='btn-deletar-produto' onClick={abrirModal}>
+      <button className="btn-deletar-produto" onClick={abrirModal}>
         <DeleteIcon />
       </button>
 
@@ -68,10 +75,11 @@ export default function BtnDeletarProduto({ produto, onDelete }) {
       >
         {deletado ? (
           confirmaDelecao()
-
         ) : (
           <>
-            <h2 className="msg-modal">Você tem certeza que deseja excluir o produto?</h2>
+            <h2 className="msg-modal">
+              Você tem certeza que deseja excluir o produto?
+            </h2>
             <div className="btns-modal">
               <Botao onClick={executarDelecaoProduto}>Sim</Botao>
               <Botao onClick={fecharModal}>Não</Botao>
@@ -82,8 +90,3 @@ export default function BtnDeletarProduto({ produto, onDelete }) {
     </>
   );
 }
-
-
-
-
-
