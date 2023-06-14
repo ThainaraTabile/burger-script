@@ -8,7 +8,6 @@ import TokenExpiracao from '../../Autenticacao/Auth';
 import Modal from 'react-modal';
 import { useState } from 'react';
 
-
 const customStyles = {
   content: {
     position: 'absolute',
@@ -41,8 +40,7 @@ export default function AguardandoEntrega() {
     try {
       await atualizarStatusPedido(pedido.id, 'entregue');
       setModalAberto(true);
-      setModalMessage('Pedido entregue!')
-
+      setModalMessage('Pedido entregue!');
     } catch (error) {
       console.error('Erro ao marcar pedido como entregue:', error);
     }
@@ -64,12 +62,12 @@ export default function AguardandoEntrega() {
           <Botao onClick={() => marcarComoEntregue(pedido)}>concluído</Botao>
         )}
       />
-       <Modal
+      <Modal
         isOpen={modalAberto}
         onRequestClose={fecharModal}
         style={customStyles}
       >
-         <h2 className='msg-modal'>{modalMessage}</h2>
+        <h2 className="msg-modal">{modalMessage}</h2>
         <Botao onClick={fecharModal}>OK</Botao>
       </Modal>
     </section>

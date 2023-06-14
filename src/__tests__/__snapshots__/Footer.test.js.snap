@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Verifica se o componente é renderizado corretamente 1`] = `
+<footer
+  data-testid="footer"
+>
+  <img
+    class="img-footer"
+  />
+</footer>
+`;

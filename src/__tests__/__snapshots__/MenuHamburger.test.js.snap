@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuHamburger Verifica se o componente é renderizado corretamente 1`] = `
+<div
+  class="menu-hamburger"
+  data-testid="menu-hamburger"
+>
+  <div
+    class="container-menu-fechado"
+  >
+    <img
+      class="img-tipo-refeicao"
+    />
+    <div
+      class="hamburger-icon "
+    >
+      <h2
+        class="titulo-tipo-refeicao"
+      />
+    </div>
+  </div>
+  <div
+    class="manu-aberto"
+  />
+</div>
+`;

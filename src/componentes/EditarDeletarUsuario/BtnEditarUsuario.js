@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export default function BtnEditarUsuario({ usuario, aoSalvar, onCancel }) {
   const [name, setNome] = useState(usuario.name);
@@ -18,23 +18,22 @@ export default function BtnEditarUsuario({ usuario, aoSalvar, onCancel }) {
 
   return (
     <>
-    <div className="input-editar-usuario">
-      
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setNome(e.target.value)}
-      />
-      <input
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="text"
-        value={role}
-        onChange={(e) => setCargo(e.target.value)}
-      />
+      <div className="input-editar-usuario">
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setNome(e.target.value)}
+        />
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="text"
+          value={role}
+          onChange={(e) => setCargo(e.target.value)}
+        />
       </div>
       <button className="btn-lista-usuarios" onClick={btnSalvar}>
         Salvar

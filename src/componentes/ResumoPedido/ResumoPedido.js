@@ -45,14 +45,18 @@ const ResumoPedido = ({ produtosSelecionados }) => {
           total: produto.total,
         }));
 
-        const novoPedido = await adicionarPedido(nomeCliente, mesa, produtos, nomeAtendente);
+        const novoPedido = await adicionarPedido(
+          nomeCliente,
+          mesa,
+          produtos,
+          nomeAtendente
+        );
         console.log('Pedido registrado:', novoPedido);
 
         setTimeout(() => {
           setNomeCliente('');
           setMesa('');
           setNomeAtendente('');
-         
         });
         setModalIsOpen(true);
         setModalMessage('Pedido registrado com sucesso!');
@@ -61,7 +65,9 @@ const ResumoPedido = ({ produtosSelecionados }) => {
       }
     } else {
       setModalIsOpen(true);
-      setModalMessage('Para que o pedido seja registrado, é necessário preencher todos os campos!');
+      setModalMessage(
+        'Para que o pedido seja registrado, é necessário preencher todos os campos!'
+      );
     }
   };
   const closeModal = () => {
@@ -72,16 +78,14 @@ const ResumoPedido = ({ produtosSelecionados }) => {
     <>
       <CardTerminal>
         <h2 className="titulo-login">
-          <span className="chaves">{"{"}</span>
+          <span className="chaves">{'{'}</span>
           Resumo do Pedido
-          <span className="chaves">{"}"}</span>
+          <span className="chaves">{'}'}</span>
         </h2>
-        <div className='container-label-input'>
-          <div className='linha-label-input'>
-            <label htmlFor='mesa'>
-              mesa:
-            </label>
-            <span className="terminal-cursor"></span>
+        <div className="container-label-input">
+          <div className="linha-label-input">
+            <label htmlFor="mesa">mesa:</label>
+            <span className="terminal-cursor" />
             <input
               className="inputResumoPedido"
               id="mesa"
@@ -89,9 +93,9 @@ const ResumoPedido = ({ produtosSelecionados }) => {
               onChange={(e) => setMesa(e.target.value)}
             />
           </div>
-          <div className='linha-label-input'>
-            <label htmlFor='cliente'>
-              cliente:<span className="terminal-cursor"></span>
+          <div className="linha-label-input">
+            <label htmlFor="cliente">
+              cliente:<span className="terminal-cursor" />
             </label>
             <input
               className="inputResumoPedido"
@@ -122,7 +126,7 @@ const ResumoPedido = ({ produtosSelecionados }) => {
             <tfoot>
               <tr>
                 <th className="th-total">total</th>
-                <th className='th-total'></th>
+                <th className="th-total" />
                 <td className="th-total">
                   R$
                   {produtosSelecionados.reduce((total, produto) => {
@@ -143,7 +147,7 @@ const ResumoPedido = ({ produtosSelecionados }) => {
         contentLabel="Pedido Entregue"
         style={customStyles}
       >
-         <h2 className='msg-modal'>{modalMessage}</h2>
+        <h2 className="msg-modal">{modalMessage}</h2>
         <Botao onClick={closeModal}>OK</Botao>
       </Modal>
     </>

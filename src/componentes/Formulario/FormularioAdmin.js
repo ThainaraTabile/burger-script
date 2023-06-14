@@ -1,4 +1,3 @@
-
 import CampoTexto from '../CampoTexto/CampoTexto';
 import Botao from '../Botao/Botao';
 import { useState } from 'react';
@@ -59,9 +58,7 @@ const FormularioAdmin = () => {
       </form>
 
       {cadastroSucesso && (
-        <div className="msg-sucesso">
-          Cadastro realizado com sucesso!
-        </div>
+        <div className="msg-sucesso">Cadastro realizado com sucesso!</div>
       )}
     </section>
   );

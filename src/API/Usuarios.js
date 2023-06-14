@@ -2,16 +2,15 @@ import {
   API_URL,
   pegarAuthToken,
   setAuthToken,
-}
-  from './localStorage/LocalStorageToken.js'
+} from './localStorage/LocalStorageToken.js';
 
 export const login = async (email, password, name) => {
   const response = await fetch(`${API_URL}/login`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email, password, name })
+    body: JSON.stringify({ email, password, name }),
   });
   if (response.status === 400) {
     throw new Error('Senha incorreta ou usuário não cadastrado!');
@@ -25,10 +24,9 @@ export const login = async (email, password, name) => {
   return data;
 };
 
-
 export const criarUsuario = async (nome, email, password, role) => {
   const response = await fetch(`${API_URL}/users`, {
-    method: "POST",
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -36,8 +34,8 @@ export const criarUsuario = async (nome, email, password, role) => {
       name: nome,
       email: email,
       password: password,
-      role: role
-    })
+      role: role,
+    }),
   });
 
   if (!response.ok) {
@@ -46,9 +44,7 @@ export const criarUsuario = async (nome, email, password, role) => {
     }
     throw new Error('Erro ao criar o usuário');
   }
-
-
-}
+};
 
 export const listarUsuarios = async () => {
   try {
@@ -57,10 +53,10 @@ export const listarUsuarios = async () => {
     }
 
     const response = await fetch(`${API_URL}/users`, {
-      method: "GET",
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${pegarAuthToken()}`
+        Authorization: `Bearer ${pegarAuthToken()}`,
       },
     });
 
@@ -79,7 +75,6 @@ export const listarUsuarios = async () => {
 
 export const deletarUsuario = async (id) => {
   try {
-
     if (!pegarAuthToken()) {
       throw new Error('Usuário não autenticado');
     }
@@ -88,8 +83,8 @@ export const deletarUsuario = async (id) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${pegarAuthToken()}`
-      }
+        Authorization: `Bearer ${pegarAuthToken()}`,
+      },
     });
 
     if (!response.ok) {
@@ -105,18 +100,17 @@ export const deletarUsuario = async (id) => {
 
 export const editarUsuario = async (uid, novoUsuario) => {
   try {
-
     if (!pegarAuthToken()) {
       throw new Error('Usuário não autenticado');
     }
 
     const response = await fetch(`${API_URL}/users/${uid}`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${pegarAuthToken()}`
+        Authorization: `Bearer ${pegarAuthToken()}`,
       },
-      body: JSON.stringify(novoUsuario)
+      body: JSON.stringify(novoUsuario),
     });
 
     if (!response.ok) {
@@ -131,7 +125,6 @@ export const editarUsuario = async (uid, novoUsuario) => {
     throw new Error('Erro ao editar o usuário');
   }
 };
-
 
 export const obterNomeUsuario = () => {
   const authToken = localStorage.getItem('authToken');

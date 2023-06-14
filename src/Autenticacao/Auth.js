@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import { differenceInMinutes } from 'date-fns';
-import Modal from "react-modal";
+import Modal from 'react-modal';
 import Botao from '../componentes/Botao/Botao';
 import './Auth.css';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +23,7 @@ const customStyles = {
     padding: '20px',
     maxWidth: '300px',
   },
-}; 
+};
 
 Modal.setAppElement('#root');
 
@@ -54,8 +54,8 @@ export const verificarAutenticacao = () => {
 function TokenExpiracao() {
   const [tempoRestante, setTempoRestante] = useState(null);
   const [modalAberto, setModalAberto] = useState(false);
-  
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const authToken = localStorage.getItem('authToken');
@@ -66,9 +66,11 @@ function TokenExpiracao() {
       const dataExpiracao = new Date(expiracaoDoToken);
 
       const atualizarTempoRestante = () => {
-
         const dataAtual = new Date();
-        const diferencaEmMinutos = differenceInMinutes(dataExpiracao, dataAtual);
+        const diferencaEmMinutos = differenceInMinutes(
+          dataExpiracao,
+          dataAtual
+        );
         const horas = Math.floor(diferencaEmMinutos / 60);
         const minutos = diferencaEmMinutos % 60;
         let tempoRestanteFormatado = '';
@@ -80,7 +82,6 @@ function TokenExpiracao() {
         }
         setTempoRestante(tempoRestanteFormatado);
       };
-     
 
       atualizarTempoRestante();
 
@@ -100,13 +101,12 @@ function TokenExpiracao() {
 
   const fecharModal = () => {
     setModalAberto(false);
-    navigate('/')
-    
+    navigate('/');
   };
 
   return (
     <>
-      <div className='exp-token'>
+      <div className="exp-token">
         <h4>{tempoRestante}</h4>
       </div>
       <Modal
@@ -115,7 +115,7 @@ function TokenExpiracao() {
         contentLabel="Token Expirado"
         style={customStyles}
       >
-        <h2 className='msg-modal'>O token expirou!</h2>
+        <h2 className="msg-modal">O token expirou!</h2>
         <p>Por favor, faça login novamente.</p>
         <div className="btn-modal">
           <Botao onClick={fecharModal}>OK</Botao>

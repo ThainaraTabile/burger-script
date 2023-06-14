@@ -2,9 +2,7 @@ import React from 'react';
 import './BtnIncrementaDecrementa.css';
 import { useState } from 'react';
 
-
 const BtnIncrementaDecrementa = ({ incrementa, decrementa }) => {
-
   const [count, setCount] = useState(0);
 
   const incrementarContador = () => {
@@ -33,5 +31,3 @@ const BtnIncrementaDecrementa = ({ incrementa, decrementa }) => {
 };
 
 export default BtnIncrementaDecrementa;
-
-

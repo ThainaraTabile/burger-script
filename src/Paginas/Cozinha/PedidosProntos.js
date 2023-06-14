@@ -56,8 +56,8 @@
 //       </nav>
 //       <TokenExpiracao />
 //       <MenuNavegacao
-//        texto="pronto para servir" 
-//        imagemSrc="pronto-para-servir.png" 
+//        texto="pronto para servir"
+//        imagemSrc="pronto-para-servir.png"
 //        />
 //       <ListaDePedidos
 //         status="pronto para entrega"
@@ -88,11 +88,12 @@ import TokenExpiracao from '../../Autenticacao/Auth';
 import { ModalContext } from '../../contextos/ModalContext';
 
 export default function PedidosProntos() {
-  const { modalAberto,
+  const {
+    modalAberto,
     setModalAberto,
     modalMessage,
     setModalMessage,
-    fecharModal
+    fecharModal,
   } = useContext(ModalContext);
 
   const enviarPedido = async (pedido) => {
@@ -108,25 +109,22 @@ export default function PedidosProntos() {
   return (
     <section className="telaFazerPedido">
       <nav className="botaoSair">
-
-        <Link to="/cozinha"
-          className="botaoSair">
+        <Link to="/cozinha" className="botaoSair">
           Voltar
         </Link>
       </nav>
 
       <TokenExpiracao />
 
-      <MenuNavegacao texto="pronto para servir"
+      <MenuNavegacao
+        texto="pronto para servir"
         imagemSrc="pronto-para-servir.png"
       />
       <ListaDePedidos
         status="pronto para entrega"
         props={'Processamento'}
         btnStatus={(pedido) => (
-          <Botao onClick={() => enviarPedido(pedido)}>
-            enviar
-          </Botao>
+          <Botao onClick={() => enviarPedido(pedido)}>enviar</Botao>
         )}
       />
       {modalAberto && (
