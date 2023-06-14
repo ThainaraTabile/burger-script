@@ -74,7 +74,7 @@ const ListaDePedidos = ({ status, btnStatus, props }) => {
                 <div className="loader" />
               </li>
               <li>
-                {props.valor} {pedido.dateProcessed}
+                {props} {pedido.dateProcessed}
               </li>
               {btnStatus(pedido)}
             </ul>
