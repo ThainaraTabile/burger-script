@@ -37,7 +37,7 @@ export default function Atendimento() {
         />
       </section>
       <Footer
-        imagemSrc="../imagens/img-footer/1.png"
+        imagemSrc="../imagens/img-footer/1.webp"
         imagemAlt="Banner atendimento"
       />
     </>

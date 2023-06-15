@@ -29,7 +29,7 @@ export default function Administracao() {
         />
       </section>
       <Footer
-        imagemSrc="../imagens/img-footer/2.png"
+        imagemSrc="../imagens/img-footer/2.webp"
         imagemAlt="Banner administração"
       />
     </>
