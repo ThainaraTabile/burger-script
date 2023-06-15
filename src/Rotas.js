@@ -16,8 +16,10 @@ import { PrivateRoute } from './PrivateRoutes';
 import { ProdutosProvider } from './contextos/ProdutosContext';
 import { ModalProvider } from './contextos/ModalContext';
 
+
 function AppRoutes() {
   return (
+
     <BrowserRouter>
       <ProdutosProvider>
         <ModalProvider>
