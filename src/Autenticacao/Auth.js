@@ -1,31 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import { differenceInMinutes } from 'date-fns';
-import Modal from 'react-modal';
 import Botao from '../componentes/Botao/Botao';
 import './Auth.css';
 import { useNavigate } from 'react-router-dom';
+import { ModalContext } from '../contextos/ModalContext';
 
-const customStyles = {
-  content: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    textAlign: 'center',
-    justifyContent: 'center',
-    border: '1px solid #ccc',
-    background: 'var(--azul-escuro)',
-    overflow: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    borderRadius: '4px',
-    outline: 'none',
-    padding: '20px',
-    maxWidth: '300px',
-  },
-};
 
-Modal.setAppElement('#root');
 
 export const verificarAutenticacao = () => {
   const authToken = localStorage.getItem('authToken');
@@ -53,7 +34,14 @@ export const verificarAutenticacao = () => {
 
 function TokenExpiracao() {
   const [tempoRestante, setTempoRestante] = useState(null);
-  const [modalAberto, setModalAberto] = useState(false);
+
+  const {
+    modalAberto,
+    setModalAberto,
+    modalMessage,
+    setModalMessage,
+    fecharModal,
+  } = useContext(ModalContext);
 
   const navigate = useNavigate();
 
@@ -96,11 +84,13 @@ function TokenExpiracao() {
   useEffect(() => {
     if (tempoRestante === 'Token expirado') {
       setModalAberto(true);
+      setModalMessage('Seu token expirou, faça login novamente!')
     }
-  }, [tempoRestante]);
+  }, [tempoRestante, setModalAberto, setModalMessage]);
 
-  const fecharModal = () => {
+  const handleModalOkClick = () => {
     setModalAberto(false);
+    setModalMessage('');
     navigate('/');
   };
 
@@ -109,18 +99,12 @@ function TokenExpiracao() {
       <div className="exp-token">
         <h4>{tempoRestante}</h4>
       </div>
-      <Modal
-        isOpen={modalAberto}
-        onRequestClose={fecharModal}
-        contentLabel="Token Expirado"
-        style={customStyles}
-      >
-        <h2 className="msg-modal">O token expirou!</h2>
-        <p>Por favor, faça login novamente.</p>
-        <div className="btn-modal">
-          <Botao onClick={fecharModal}>OK</Botao>
+      {modalAberto && (
+        <div className="modal">
+          <h2 className="msg-modal">{modalMessage}</h2>
+          <Botao onClick={handleModalOkClick}>OK</Botao>
         </div>
-      </Modal>
+      )}
     </>
   );
 }
