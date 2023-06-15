@@ -6,7 +6,7 @@ const Cardapio = ({ manipularProdutoSelecionado }) => {
   return (
     <>
       <MenuHamburger
-        imagemSrc="../../imagens/img-refeicoes/cafe-da-manha.png"
+        imagemSrc="../../imagens/img-refeicoes/cafe-da-manha.webp"
         imagemAlt="Foto café da manhã"
         tipoRefeicao="Café da Manhã"
         conteudo={
@@ -17,7 +17,7 @@ const Cardapio = ({ manipularProdutoSelecionado }) => {
         }
       />
       <MenuHamburger
-        imagemSrc="../../imagens/img-refeicoes/menu-principal.png"
+        imagemSrc="../../imagens/img-refeicoes/menu-principal.webp"
         imagemAlt="Foto menu principal"
         tipoRefeicao="Menu Principal"
         conteudo={

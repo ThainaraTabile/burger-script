@@ -30,7 +30,7 @@ export default function Cozinha() {
         />
       </section>
       <Footer
-        imagemSrc="../imagens/img-footer/3.png"
+        imagemSrc="../imagens/img-footer/3.webp"
         imagemAlt="Banner cozinha"
       />
     </>

@@ -10,18 +10,18 @@ describe('Footer', () => {
         const componenteFooter = screen.getByTestId('footer');
         expect(componenteFooter).toBeInTheDocument();
         expect(componenteFooter).toMatchSnapshot();
-        
+
     });
 
     test('Verifica se a imagem, atributos src e alt estão sendo renderizados corretamente', () => {
-        const imagemSrc = 'icone-teste.png';
+        const imagemSrc = 'icone-teste.webp';
         const imagemAlt = 'Ícone de teste';
-      
+
         render(<Footer imagemSrc={imagemSrc} imagemAlt={imagemAlt} />);
-      
+
         const imagemElement = screen.getByAltText(imagemAlt);
         expect(imagemElement).toBeInTheDocument();
         expect(imagemElement).toHaveAttribute('src', expect.stringContaining(imagemSrc));
-      });
+    });
 
 })
