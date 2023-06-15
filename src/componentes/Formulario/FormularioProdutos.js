@@ -6,13 +6,13 @@ import ListaSuspensa from '../ListaSuspensa/ListaSuspensa';
 import { adicionarProdutos } from '../../API/Produtos';
 
 const FormularioProdutos = () => {
-  const listaRefeicao = [' ', 'Café da manhã', 'Refeição Principal'];
+  const listaRefeicao = [' ', 'café da manhã', 'Refeição Principal'];
   const categoria = [
     ' ',
-    'Acompanhamento',
-    'Bebida',
-    'Hambúrgueres',
-    'Lanches',
+    'acompanhamento',
+    'bebidas',
+    'hambúrgueres',
+    'lanches',
   ];
 
   const [nomeProduto, setNome] = useState('');
@@ -29,8 +29,8 @@ const FormularioProdutos = () => {
       await adicionarProdutos(
         nomeProduto,
         precoProduto,
-        categoriaProduto,
         tipoRefeicao,
+        categoriaProduto,
         idProduto
       );
       setCadastroSucesso(true);
