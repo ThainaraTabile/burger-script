@@ -4,7 +4,7 @@ import Atendimento from './Paginas/Atendimento/Atendimento';
 import Cozinha from './Paginas/Cozinha/Cozinha';
 import Administracao from './Paginas/Adm/Adm';
 import FazerPedido from './Paginas/Atendimento/FazerPedido/FazerPedido';
-import AguardandoEntrega from './Paginas/AguardandoEntrega/AguardandoEntrega';
+import AguardandoEntrega from './Paginas/Atendimento/AguardandoEntrega/AguardandoEntrega';
 import PedidosEntregues from './Paginas/Atendimento/PedidosEntregues/PedidosEntregues';
 import Colaboradores from './Paginas/Adm/PagColaboradores/Colaboradores';
 import CriarUsuario from './componentes/CriaEListaUsuario/CriarUsuario';

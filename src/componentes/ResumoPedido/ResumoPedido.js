@@ -1,38 +1,25 @@
 import './ResumoPedido.css';
 import CardTerminal from '../CardTerminal/CardTerminal';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { adicionarPedido } from '../../API/Pedidos';
 import Botao from '../Botao/Botao';
 import { obterNomeUsuario } from '../../API/Usuarios';
-import Modal from 'react-modal';
+import { ModalContext } from '../../contextos/ModalContext';
 
-const customStyles = {
-  content: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    textAlign: 'center',
-    justifyContent: 'center',
-    border: '1px solid #ccc',
-    background: 'var(--azul-escuro)',
-    overflow: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    borderRadius: '4px',
-    outline: 'none',
-    padding: '20px',
-    maxWidth: '300px',
-  },
-};
-
-Modal.setAppElement('#root');
 
 const ResumoPedido = ({ produtosSelecionados }) => {
+  const {
+    modalAberto,
+    setModalAberto,
+    modalMessage,
+    setModalMessage,
+    fecharModal,
+  } = useContext(ModalContext);
+
   const [nomeCliente, setNomeCliente] = useState('');
   const [mesa, setMesa] = useState('');
   const [nomeAtendente, setNomeAtendente] = useState(obterNomeUsuario());
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
+
 
   const enviarPedido = async () => {
     if (nomeCliente && mesa && produtosSelecionados.length > 0) {
@@ -58,22 +45,19 @@ const ResumoPedido = ({ produtosSelecionados }) => {
           setMesa('');
           setNomeAtendente('');
         });
-        setModalIsOpen(true);
+        setModalAberto(true);
         setModalMessage('Pedido registrado com sucesso!');
       } catch (error) {
         console.error('Erro ao registrar pedido:', error);
       }
     } else {
-      setModalIsOpen(true);
+      setModalAberto(true);
       setModalMessage(
         'Para que o pedido seja registrado, é necessário preencher todos os campos!'
       );
     }
   };
-  const closeModal = () => {
-    setModalIsOpen(false);
-    window.location.reload();
-  };
+
   return (
     <>
       <CardTerminal>
@@ -141,15 +125,12 @@ const ResumoPedido = ({ produtosSelecionados }) => {
 
         <Botao onClick={enviarPedido}>Enviar</Botao>
       </CardTerminal>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Pedido Entregue"
-        style={customStyles}
-      >
-        <h2 className="msg-modal">{modalMessage}</h2>
-        <Botao onClick={closeModal}>OK</Botao>
-      </Modal>
+      {modalAberto && (
+        <div className="modal">
+          <h2 className="msg-modal">{modalMessage}</h2>
+          <Botao onClick={fecharModal}>OK</Botao>
+        </div>
+      )}
     </>
   );
 };
