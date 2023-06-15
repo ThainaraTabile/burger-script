@@ -4,30 +4,30 @@ import Botao from '../Botao/Botao';
 import './estilo.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const customStyles = {
-  content: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    textAlign: 'center',
-    justifyContent: 'center',
-    border: '1px solid #ccc',
-    background: 'var(--azul-escuro)',
-    overflow: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    borderRadius: '4px',
-    outline: 'none',
-    padding: '20px',
-    maxWidth: '300px',
-  },
-};
-
-Modal.setAppElement('#root');
-
 export default function BtnDeletarUsuario({ usuario, onDelete }) {
+  Modal.setAppElement('#root');
   const [modalAberto, setModalAberto] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
+
+  const customStyles = {
+    content: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      textAlign: 'center',
+      justifyContent: 'center',
+      border: '1px solid #ccc',
+      background: 'var(--azul-escuro)',
+      overflow: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      borderRadius: '4px',
+      outline: 'none',
+      padding: '20px',
+      maxWidth: '300px',
+    },
+  };
+
 
   const abrirModal = () => {
     setModalAberto(true);
