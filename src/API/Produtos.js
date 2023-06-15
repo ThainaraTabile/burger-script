@@ -5,7 +5,9 @@ export const adicionarProdutos = async (
   precoProduto,
   tipoProduto,
   categoriaProduto,
-  idProduto
+  idProduto,
+  qntProduto,
+  imgProduto
 ) => {
   try {
     const response = await fetch(`${API_URL}/products`, {
@@ -20,6 +22,8 @@ export const adicionarProdutos = async (
         type: tipoProduto,
         category: categoriaProduto,
         id: idProduto,
+        qty: qntProduto,
+        image: imgProduto,
       }),
     });
     const products = await response.json();
