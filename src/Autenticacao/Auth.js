@@ -6,8 +6,6 @@ import './Auth.css';
 import { useNavigate } from 'react-router-dom';
 import { ModalContext } from '../contextos/ModalContext';
 
-
-
 export const verificarAutenticacao = () => {
   const authToken = localStorage.getItem('authToken');
   const userData = localStorage.getItem('user');

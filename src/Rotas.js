@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Login from './Paginas/Login/Login';
 import Atendimento from './Paginas/Atendimento/Atendimento';
 import Cozinha from './Paginas/Cozinha/Cozinha';
@@ -13,130 +13,121 @@ import Produtos from './Paginas/Adm/PagProdutos/Produtos';
 import AgrProducao from './Paginas/Cozinha/AgrProducao';
 import PedidosProntos from './Paginas/Cozinha/PedidosProntos';
 import { PrivateRoute } from './PrivateRoutes';
-import { ProdutosProvider } from './contextos/ProdutosContext';
-import { ModalProvider } from './contextos/ModalContext';
 
 
 function AppRoutes() {
   return (
+    <Routes>
+      <Route index element={<Login />} />
 
-    <BrowserRouter>
-      <ProdutosProvider>
-        <ModalProvider>
-          <Routes>
-            <Route index element={<Login />} />
+      <Route
+        path="/atendimento"
+        element={
+          <PrivateRoute roles={['Atendimento']}>
+            <Atendimento />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/atendimento"
-              element={
-                <PrivateRoute roles={['Atendimento']}>
-                  <Atendimento />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/fazerpedido"
+        element={
+          <PrivateRoute roles={['Atendimento']}>
+            <FazerPedido />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/fazerpedido"
-              element={
-                <PrivateRoute roles={['Atendimento']}>
-                  <FazerPedido />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/aguardandoentrega"
+        element={
+          <PrivateRoute roles={['Atendimento']}>
+            <AguardandoEntrega />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/aguardandoentrega"
-              element={
-                <PrivateRoute roles={['Atendimento']}>
-                  <AguardandoEntrega />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/pedidosentregues"
+        element={
+          <PrivateRoute roles={['Atendimento']}>
+            <PedidosEntregues />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/pedidosentregues"
-              element={
-                <PrivateRoute roles={['Atendimento']}>
-                  <PedidosEntregues />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/administracao"
+        element={
+          <PrivateRoute roles={['Administração']}>
+            <Administracao />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/administracao"
-              element={
-                <PrivateRoute roles={['Administração']}>
-                  <Administracao />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/colaboradores"
+        element={
+          <PrivateRoute roles={['Administração']}>
+            <Colaboradores />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/colaboradores"
-              element={
-                <PrivateRoute roles={['Administração']}>
-                  <Colaboradores />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/addcolaborador"
+        element={
+          <PrivateRoute roles={['Administração']}>
+            <CriarUsuario />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/addcolaborador"
-              element={
-                <PrivateRoute roles={['Administração']}>
-                  <CriarUsuario />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/listacolaboradores"
+        element={
+          <PrivateRoute roles={['Administração']}>
+            <ListaDeColaboradores />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/listacolaboradores"
-              element={
-                <PrivateRoute roles={['Administração']}>
-                  <ListaDeColaboradores />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/produtos"
+        element={
+          <PrivateRoute roles={['Administração']}>
+            <Produtos />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/produtos"
-              element={
-                <PrivateRoute roles={['Administração']}>
-                  <Produtos />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/cozinha"
+        element={
+          <PrivateRoute roles={['Cozinha']}>
+            <Cozinha />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/cozinha"
-              element={
-                <PrivateRoute roles={['Cozinha']}>
-                  <Cozinha />
-                </PrivateRoute>
-              }
-            />
+      <Route
+        path="/aguardandoproducao"
+        element={
+          <PrivateRoute roles={['Cozinha']}>
+            <AgrProducao />
+          </PrivateRoute>
+        }
+      />
 
-            <Route
-              path="/aguardandoproducao"
-              element={
-                <PrivateRoute roles={['Cozinha']}>
-                  <AgrProducao />
-                </PrivateRoute>
-              }
-            />
-
-            <Route
-              path="/pedidosprontos"
-              element={
-                <PrivateRoute roles={['Cozinha']}>
-                  <PedidosProntos />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-        </ModalProvider>
-      </ProdutosProvider>
-    </BrowserRouter>
+      <Route
+        path="/pedidosprontos"
+        element={
+          <PrivateRoute roles={['Cozinha']}>
+            <PedidosProntos />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
   );
 }
 
