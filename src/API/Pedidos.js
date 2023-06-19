@@ -1,4 +1,8 @@
-import { API_URL, pegarAuthToken } from './localStorage/LocalStorageToken.js';
+import {
+  API_URL,
+  pegarAuthToken
+} from './localStorage/LocalStorageToken.js';
+import fetch from 'node-fetch';
 
 const formatarData = (data) => {
   const dia = adicionarZeroEsquerda(data.getDate());

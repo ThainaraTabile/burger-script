@@ -47,34 +47,6 @@ export const criarUsuario = async (nome, email, password, role) => {
   }
 };
 
-// export const listarUsuarios = async () => {
-//   try {
-//     if (!pegarAuthToken()) {
-//       throw new Error('Usuário não autenticado');
-//     }
-
-//     const response = await fetch(`${API_URL}/users`, {
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Authorization: `Bearer ${pegarAuthToken()}`,
-//       },
-//     });
-
-//     if (!response.ok) {
-//       if (response.status === 401) {
-//         throw new Error('O token expirou, faça login novamente!');
-//       }
-//       throw new Error('Erro ao obter usuários');
-//     }
-
-//     return response.json();
-//   } catch (error) {
-//     throw new Error('Erro ao obter usuários');
-//   }
-// };
-
-
 export const listarUsuarios = async () => {
   if (!pegarAuthToken()) {
     throw new Error('Usuário não autenticado');
@@ -101,57 +73,55 @@ export const listarUsuarios = async () => {
 
 
 export const deletarUsuario = async (id) => {
-  try {
-    if (!pegarAuthToken()) {
-      throw new Error('Usuário não autenticado');
-    }
 
-    const response = await fetch(`${API_URL}/users/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${pegarAuthToken()}`,
-      },
-    });
+  if (!pegarAuthToken()) {
+    throw new Error('Usuário não autenticado');
+  }
 
-    if (!response.ok) {
-      if (response.status === 401) {
-        throw new Error('O token expirou, faça login novamente!');
-      }
-      throw new Error('Erro ao deletar usuário');
+  const response = await fetch(`${API_URL}/users/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${pegarAuthToken()}`,
+    },
+  });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error('O token expirou, faça login novamente!');
     }
-  } catch (error) {
     throw new Error('Erro ao deletar usuário');
   }
+  const respostaApi = await response.json();
+  return respostaApi;
 };
+
 
 export const editarUsuario = async (uid, novoUsuario) => {
-  try {
-    if (!pegarAuthToken()) {
-      throw new Error('Usuário não autenticado');
-    }
+  if (!pegarAuthToken()) {
+    throw new Error('Usuário não autenticado');
+  }
 
-    const response = await fetch(`${API_URL}/users/${uid}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${pegarAuthToken()}`,
-      },
-      body: JSON.stringify(novoUsuario),
-    });
+  const response = await fetch(`${API_URL}/users/${uid}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${pegarAuthToken()}`,
+    },
+    body: JSON.stringify(novoUsuario),
+  });
 
-    if (!response.ok) {
-      if (response.status === 401) {
-        throw new Error('O token expirou, faça login novamente!');
-      }
-      throw new Error('Erro ao editar o usuário');
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error('O token expirou, faça login novamente!');
     }
-    const respostaApi = await response.json();
-    return respostaApi;
-  } catch (error) {
     throw new Error('Erro ao editar o usuário');
   }
+
+  const respostaApi = await response.json();
+  return respostaApi;
 };
+
 
 export const obterNomeUsuario = () => {
   const authToken = localStorage.getItem('authToken');
