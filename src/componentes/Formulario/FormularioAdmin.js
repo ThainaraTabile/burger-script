@@ -25,8 +25,8 @@ const FormularioAdmin = () => {
   };
 
   return (
-    <section className="formulario" data-testid="formulario-admin">
-      <form onSubmit={aoSalvar}>
+    <section className="formulario" >
+      <form onSubmit={aoSalvar} data-testid="formulario-admin">
         <CampoTexto
           obrigatorio={true}
           label="Nome: "
@@ -46,6 +46,7 @@ const FormularioAdmin = () => {
           aoAlterado={(valor) => setSenha(valor)}
           tipo="password"
         />
+
         <ListaSuspensa
           obrigatorio={true}
           label="Cargo: "
