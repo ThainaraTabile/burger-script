@@ -1,164 +1,192 @@
-
- .hamburger-icon{
+.hamburger-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
- .img-tipo-refeicao{
+
+.img-tipo-refeicao {
   max-width: 20rem;
   width: 100%;
   justify-content: flex-start;
- }
+}
 
- .nome-preco{
+.nome-preco {
   list-style: none;
   display: inline-block;
   text-align: center;
 }
 
- .imagens-do-cardapio{
+.imagens-do-cardapio {
   max-width: 8rem;
   width: 100%;
- }
- .menu-hamburger{
+}
+
+.menu-hamburger {
   background: var(--cinza-claro);
   border-right: 2rem solid var(--cinza-claro);
   max-width: 70%;
   margin-bottom: 4rem;
   box-shadow: var(--sombra-destaque), var(--sombra-sombreada);
   transition: transform .2s;
- }
+}
 
- .menu-hamburger:hover{
+.menu-hamburger:hover {
   transform: rotate(10%);
-  cursor: pointer;
-  transform: translate(0, -1rem);
- }
 
-.container-menu-fechado{
+  transform: translate(0, -1rem);
+}
+
+.container-menu-fechado {
   display: flex;
   text-align: center;
 }
 
-.titulo-categoria{
+.titulo-categoria {
   text-transform: uppercase;
   margin: 1rem;
   color: var(--cinza-escuro);
   border-bottom: 3px solid;
 }
-.preco{
+
+.preco {
   color: var(--verde);
   font-weight: bold;
 }
-.titulo-tipo-refeicao{
+
+.titulo-tipo-refeicao {
   color: var(--azul-escuro);
   font-family: Georgia;
+  cursor: pointer;
 }
-.container-dos-produtos{
-  border-bottom: 1rem solid var(--cinza-claro) ;
+
+.titulo-tipo-refeicao:hover {
+  color: var(--verde)
+}
+
+.container-dos-produtos {
+  border-bottom: 1rem solid var(--cinza-claro);
 }
 
 @media only screen and (max-width: 767px) {
-  .img-tipo-refeicao{
+  .img-tipo-refeicao {
     max-width: 8rem;
-   }
-   .container-dos-produtos{
+  }
+
+  .container-dos-produtos {
     justify-content: center;
     flex-direction: column;
     align-items: center;
     display: flex;
     text-align: center;
-   }
-   .imagens-do-cardapio{
+  }
+
+  .imagens-do-cardapio {
     max-width: 5rem;
     width: 100%;
-   }
-   .lista-itens-cardapio{
+  }
+
+  .lista-itens-cardapio {
     display: inline-block;
     justify-content: center;
     flex-direction: column;
     text-align: center;
   }
-  .titulo-tipo-refeicao{
+
+  .titulo-tipo-refeicao {
     font-size: 1.1em;
   }
-  .titulo-categoria{
+
+  .titulo-categoria {
     font-size: 0.9em;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .img-tipo-refeicao{
-    max-width: 15rem;
-   }
 
-  .titulo-tipo-refeicao{
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .img-tipo-refeicao {
+    max-width: 15rem;
+  }
+
+  .titulo-tipo-refeicao {
     font-size: 1.6em;
   }
-  .titulo-categoria{
+
+  .titulo-categoria {
     font-size: 1.3em;
   }
-  .lista-itens-cardapio{
+
+  .lista-itens-cardapio {
     display: inline-block;
     flex-direction: row;
     justify-content: center;
   }
-  .container-dos-produtos{
+
+  .container-dos-produtos {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .nome-preco{
+
+  .nome-preco {
     font-size: 20px;
   }
 }
 
 
 @media only screen and (min-width: 1024px) {
-  .img-tipo-refeicao{
+  .img-tipo-refeicao {
     max-width: 16rem;
-   }
-   .lista-itens-cardapio{
+  }
+
+  .lista-itens-cardapio {
     display: inline-block;
     flex-direction: row;
     justify-content: center;
   }
-  .container-dos-produtos{
+
+  .container-dos-produtos {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .titulo-tipo-refeicao{
+
+  .titulo-tipo-refeicao {
     font-size: 1.8em;
   }
-  .nome-preco{
+
+  .nome-preco {
     font-size: 20px;
   }
-  .titulo-categoria{
+
+  .titulo-categoria {
     font-size: 1.5em;
   }
-  
+
 }
 
 @media only screen and (min-width: 1200px) {
- 
-  .lista-itens-cardapio{
+
+  .lista-itens-cardapio {
     display: inline-block;
     flex-direction: row;
     justify-content: center;
   }
-  .container-dos-produtos{
+
+  .container-dos-produtos {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .titulo-tipo-refeicao{
+
+  .titulo-tipo-refeicao {
     font-size: 1.8em;
   }
-  .nome-preco{
+
+  .nome-preco {
     font-size: 20px;
   }
-  .titulo-categoria{
+
+  .titulo-categoria {
     font-size: 1.5em;
   }
 }

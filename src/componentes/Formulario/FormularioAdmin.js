@@ -48,11 +48,13 @@ const FormularioAdmin = () => {
         />
 
         <ListaSuspensa
+          data-testid='cargo'
           obrigatorio={true}
           label="Cargo: "
           valor={cargo}
           itens={listaDeCargos}
           aoAlterado={(valor) => setCargo(valor)}
+
         />
 
         <Botao>Cadastrar</Botao>

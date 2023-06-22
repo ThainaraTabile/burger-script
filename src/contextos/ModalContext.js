@@ -30,7 +30,7 @@ export const ModalProvider = ({ children }) => {
 
   const fecharModal = () => {
     setModalAberto(false);
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (

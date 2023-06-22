@@ -4,7 +4,7 @@ const ListaSuspensa = (props) => {
   return (
     <div className="lista-suspensa">
       <label>{props.label}</label>
-      <select
+      <select data-testid='lista-suspensa'
         onChange={(evento) => props.aoAlterado(evento.target.value)}
         required={props.required}
         value={props.valor}
