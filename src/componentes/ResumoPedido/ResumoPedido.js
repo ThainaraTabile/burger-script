@@ -75,6 +75,7 @@ const ResumoPedido = ({ produtosSelecionados }) => {
               id="mesa"
               value={mesa}
               onChange={(e) => setMesa(e.target.value)}
+              type='number'
             />
           </div>
           <div className="linha-label-input">

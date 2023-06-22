@@ -21,7 +21,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll --coverage",
+    "test": "react-scripts test --watchAll=false --coverage",
+    "test:watch": "react-scripts test --coverage ",
     "format": "prettier --write \"src/**/*{.js,.jsx}\"",
     "lint": "eslint \"src/**/*{.js,.jsx}\" --fix",
     "eject": "react-scripts eject"
