@@ -63,3 +63,4 @@ describe('pegarAuthToken', () => {
     expect(pegarAuthToken()).toBeNull();
   });
 });
+

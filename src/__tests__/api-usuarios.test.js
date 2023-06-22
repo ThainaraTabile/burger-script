@@ -21,7 +21,6 @@ describe('API Usuários', () => {
 
     describe('login', () => {
 
-
         test('deve fazer uma solicitação de login e definir o token e o usuário corretamente', async () => {
             const email = 'test@example.com';
             const password = 'password';

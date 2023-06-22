@@ -1,10 +1,8 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import { differenceInMinutes } from 'date-fns';
-import Botao from '../componentes/Botao/Botao';
 import './Auth.css';
 import { useNavigate } from 'react-router-dom';
-import { ModalContext } from '../contextos/ModalContext';
 
 export const verificarAutenticacao = () => {
   const authToken = localStorage.getItem('authToken');
@@ -33,14 +31,6 @@ export const verificarAutenticacao = () => {
 function TokenExpiracao() {
   const [tempoRestante, setTempoRestante] = useState(null);
 
-  const {
-    modalAberto,
-    setModalAberto,
-    modalMessage,
-    setModalMessage,
-    fecharModal,
-  } = useContext(ModalContext);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,6 +51,12 @@ function TokenExpiracao() {
         const minutos = diferencaEmMinutos % 60;
         let tempoRestanteFormatado = '';
 
+        if (horas + minutos <= 0) {
+          localStorage.removeItem('authToken');
+          navigate('/');
+          return;
+        }
+
         if (horas > 0) {
           tempoRestanteFormatado = `Seu token expira em ${horas}h ${minutos}min!`;
         } else {
@@ -79,30 +75,11 @@ function TokenExpiracao() {
     }
   }, []);
 
-  useEffect(() => {
-    if (tempoRestante === 'Token expirado') {
-      setModalAberto(true);
-      setModalMessage('Seu token expirou, faça login novamente!')
-    }
-  }, [tempoRestante, setModalAberto, setModalMessage]);
-
-  const handleModalOkClick = () => {
-    setModalAberto(false);
-    setModalMessage('');
-    navigate('/');
-  };
-
   return (
     <>
       <div className="exp-token">
         <h4>{tempoRestante}</h4>
       </div>
-      {modalAberto && (
-        <div className="modal">
-          <h2 className="msg-modal">{modalMessage}</h2>
-          <Botao onClick={handleModalOkClick}>OK</Botao>
-        </div>
-      )}
     </>
   );
 }

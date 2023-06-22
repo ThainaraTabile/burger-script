@@ -16,6 +16,7 @@ const MenuHamburger = ({ conteudo, tipoRefeicao, imagemSrc, imagemAlt }) => {
           onClick={alternarMenu}
           onKeyDown={alternarMenu}
         >
+
           <h2 className="titulo-tipo-refeicao">{tipoRefeicao}</h2>
         </div>
       </div>
