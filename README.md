@@ -1,6 +1,6 @@
 # Burger-Script :hamburger:
 
-Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Queen envolve o desenvolvimento de uma interface de pedidos para um restaurante de hambúrgueres, que deve integrar-se com uma API . O objetivo principal é aprender a construir uma interface web utilizando o React. Projeto desenvolvido em parceria com @ThainaraTabile.
+Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Queen envolve o desenvolvimento de uma interface de pedidos para um restaurante de hambúrgueres, que deve integrar-se com uma API . O objetivo principal é aprender a construir uma aplicação web utilizando o React. Projeto desenvolvido em parceria com @patriciadania.
 <div align="center">
 <img width="500" src="https://github.com/patriciadania/burger-script/assets/120285942/2960fb2a-49af-4675-a8ca-3a47ab20a913"/>
 
@@ -85,7 +85,13 @@ Não há uma aba específica para cadastro de novos usuários. Isso ocorre porqu
 
 Caso você queira testar a aplicação, pode fazer login utilizando alguma das credenciais abaixo:
 
-email:   | senha:  
+email: atendimento@bs.com   | senha:  1234567
+ <br>
+  <br>
+email: cozinha@bs.com   | senha:  1234567
+ <br>
+  <br>
+email: adm@bs.com   | senha:  1234567
 
 Destaco que essas são contas de teste e têm permissões restritas, com base nos perfis de usuário predefinidos.
 
@@ -104,7 +110,7 @@ Além dessas tecnologias mencionadas, também foram utilizadas outras ferramenta
 
 
 ## 5. Mock da API
-Este projeto utiliza um `mock de API` para o recebimento e processamento dos dados enviados pela interface do cliente.
+Este projeto utiliza um [`mock de API`](https://burger-queen-api-mock-one.vercel.app/) para o recebimento e processamento dos dados enviados pela interface do cliente.
 
 É importante ressaltar que o `mock de API` não armazena os dados permanentemente, pois não possui um banco de dados real. Isso significa que, ao utilizar a interface, os dados enviados são temporários e não persistem entre sessões. 
 
@@ -128,5 +134,5 @@ Os testes de usabilidade foram conduzidos com uma abordagem centrada no usuário
 Essa abordagem ajuda a garantir que a interface seja intuitiva, fácil de usar e forneça uma experiência satisfatória aos usuários finais.
 
  
-***
-Em construção :construction:
+
+
