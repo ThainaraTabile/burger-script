@@ -53,28 +53,6 @@ export const obterProdutos = async () => {
 
 };
 
-// export const deletarProduto = async (id) => {
-//   try {
-//     if (!pegarAuthToken()) {
-//       throw new Error('Usuário não autenticado');
-//     }
-
-//     const response = await fetch(`${API_URL}/products/${id}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Authorization: `Bearer ${pegarAuthToken()}`,
-//       },
-//     });
-
-//     if (!response.ok) {
-//       throw new Error('Erro ao deletar produto');
-//     }
-//   } catch (error) {
-//     throw new Error('Erro ao deletar produto');
-//   }
-// };
-
 export const deletarProduto = async (id) => {
   if (!pegarAuthToken()) {
     throw new Error('Usuário não autenticado');

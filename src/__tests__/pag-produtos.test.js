@@ -5,8 +5,6 @@ import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { createBrowserHistory } from 'history';
 import { BrowserRouter } from 'react-router-dom';
-
-
 import Produtos from "../Paginas/Adm/PagProdutos/Produtos";
 
 jest.mock('../Autenticacao/Auth', () => {
