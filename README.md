@@ -1,6 +1,6 @@
 # Burger-Script :hamburger:
 
-Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Queen envolve o desenvolvimento de uma interface de pedidos para um restaurante de hambúrgueres, que deve integrar-se com uma API . O objetivo principal é aprender a construir uma aplicação web utilizando o React. Projeto desenvolvido em parceria com @patriciadania.
+Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Script envolve o desenvolvimento de uma interface de pedidos para um restaurante de hambúrgueres, que deve integrar-se com uma API . O objetivo principal é aprender a construir uma aplicação web utilizando o React. Projeto desenvolvido em parceria com @patriciadania.
 <div align="center">
 <img width="500" src="https://github.com/patriciadania/burger-script/assets/120285942/2960fb2a-49af-4675-a8ca-3a47ab20a913"/>
 
