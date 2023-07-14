@@ -1,5 +1,4 @@
 import FormularioLogin from '../../componentes/Formulario/FormularioLogin';
-//import { Logo } from '../../componentes/Logo/Logo';
 import Logo from '../../componentes/Logo/Logo';
 import './Login.css';
 

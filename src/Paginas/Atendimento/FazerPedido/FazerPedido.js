@@ -5,6 +5,7 @@ import './FazerPedido.css';
 import { Link } from 'react-router-dom';
 import MenuNavegacao from '../../../componentes/MenuNavegacao/MenuNavegacao';
 import TokenExpiracao from '../../../Autenticacao/Auth';
+import { ProdutosProvider } from '../../../contextos/ProdutosContext';
 
 const FazerPedido = () => {
   const [produtosSelecionados, setProdutosSelecionados] = useState([]);
@@ -56,8 +57,10 @@ const FazerPedido = () => {
         texto="registrar pedido"
         imagemSrc="fazer-pedido.png"
       />
-      <Cardapio manipularProdutoSelecionado={manipularProdutoSelecionado} />
-      <ResumoPedido produtosSelecionados={produtosSelecionados} />
+      <ProdutosProvider>
+        <Cardapio manipularProdutoSelecionado={manipularProdutoSelecionado} />
+        <ResumoPedido produtosSelecionados={produtosSelecionados} />
+      </ProdutosProvider>
     </section>
   );
 };

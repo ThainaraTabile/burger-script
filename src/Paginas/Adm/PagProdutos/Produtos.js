@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ListaDeProdutos from './ListaDeProdutos';
 import MenuNavegacao from '../../../componentes/MenuNavegacao/MenuNavegacao';
 import TokenExpiracao from '../../../Autenticacao/Auth';
+import { ProdutosProvider } from '../../../contextos/ProdutosContext';
 
 export default function Produtos() {
   return (
@@ -14,9 +15,10 @@ export default function Produtos() {
       </nav>
       <TokenExpiracao />
       <MenuNavegacao texto="produtos" imagemSrc="lista-de-produtos.png" />
-
-      <FormularioProdutos />
-      <ListaDeProdutos />
+      <ProdutosProvider>
+        <FormularioProdutos />
+        <ListaDeProdutos />
+      </ProdutosProvider>
     </section>
   );
 }
