@@ -1,6 +1,8 @@
 # Burger-Script :hamburger:
 
-Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Script envolve o desenvolvimento de uma interface de pedidos para um restaurante de hambúrgueres, que deve integrar-se com uma API . O objetivo principal é aprender a construir uma aplicação web utilizando o React. Projeto desenvolvido em parceria com @patriciadania.
+Quinto projeto realizado pelo bootcamp [Laboratória](https://github.com/Laboratoria), que consiste em uma interface de usuário desenvolvida com React, com o objetivo de fornecer uma solução completa para gerenciamento do fictício restaurante Burger Script, um fast food 24hrs.
+
+Projeto desenvolvido em parceria com [@patriciadania](https://github.com/patriciadania).
 <div align="center">
 <img width="500" src="https://github.com/patriciadania/burger-script/assets/120285942/2960fb2a-49af-4675-a8ca-3a47ab20a913"/>
 
@@ -18,18 +20,6 @@ Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Script env
   <img align="center" alt="Rafa-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
   <img align="center" alt="vscode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
   <img align="center" alt="Figma" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" />
-  <br>
-
-
-  Desenvolvido por <br>
-  <br>
-    Patricia Adania de Oliveira<br>
-  [Linkedin](https://www.linkedin.com/in/patriciadania/) | [Github](https://github.com/patriciadania)
-  <br>
-  <br>
-  Thainara Tabile <br>
-  [Linkedin](https://www.linkedin.com/in/thainaratabile/) | [Github](https://github.com/ThainaraTabile) 
-  <br>
   <br>
  
   
@@ -51,8 +41,6 @@ Quinto projeto realizado pelo bootcamp @Laboratoria, o projeto Burger Script env
 
 ## 1. Sobre o projeto
 
-
-Este projeto consiste em uma interface de usuário desenvolvida com React, com o objetivo de fornecer uma solução completa para gerenciamento do restaurante `Burger Script`, um fast food 24hrs.
 
 A interface visa melhorar a eficiência operacional e facilitar a administração do restaurante Burger Script, oferecendo uma plataforma com funcionalidades que atendem as necessidades de cada área do negócio.
 
